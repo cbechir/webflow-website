@@ -1,0 +1,221 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
+<script>
+  //init masonry grid 
+$(window).on("load", function() {  
+  $('.photo-series-pictures-data').imagesLoaded( function() {
+    $('.photo-series-pictures-data').masonry({
+      itemSelector: '.photo-series-picture-data',
+      horizontalOrder: true
+    });
+  });
+});
+</script>
+
+<!-- Script to give an ID to each picture collection item -->
+<script>
+  $(document).ready(function(){
+     $('.w-dyn-item').each(function() {
+        $(this).attr('id', 'picture-'+ $(this).children('.hidden-picture-number').text().trim());
+        console.log("Unique Ids added");
+     });
+  });
+</script>
+
+
+<script>
+   var thumbnails = document.getElementsByClassName("photo-series-picture-data");
+   var numberOfPictures = thumbnails.length; 
+   
+   var getPictureCatpion = function(element) {
+      return element.getElementsByClassName("hidden-picture-caption")[0].textContent; 
+   };
+   
+   var getPictureNumber = function(element) {
+      return element.getElementsByClassName("hidden-picture-number")[0].textContent;
+   }
+   
+   var getPictureImageUrl = function(element) {
+      return element.getElementsByClassName("photo-series-image")[0].getAttribute("src"); 
+   }
+   
+   var wrapAroundUrlTerm = function(url) {
+      return "url('" + url + "')"
+   }
+   
+   
+   var isLeftEdgeReached = function(pictureNumber) {
+     return pictureNumber == 1; 
+   }
+   
+   var isRightEdgeReached = function(pictureNumber) {
+     return pictureNumber == numberOfPictures; 
+   }
+   
+   var updateCursors = function(pictureNumber) {
+      if (isLeftEdgeReached(pictureNumber)) {
+         document.getElementById('gallery-lower-left-section').style.cursor = "auto";
+         document.getElementById('gallery-lower-right-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a69bb143b8f027d6831ff_chevron-right-icon-25px.png'), e-resize";
+      }
+      else if (isRightEdgeReached(pictureNumber)) {
+         document.getElementById('gallery-lower-right-section').style.cursor = "auto";
+         document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
+     }
+     else {
+        document.getElementById('gallery-lower-right-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a69bb143b8f027d6831ff_chevron-right-icon-25px.png'), e-resize";
+        document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
+     }
+   }
+   
+   var closePictureOverlay = function() {
+     document.getElementById("single-picture-overlay").style.display = "none";      
+     document.getElementById("picture-caption").style.display = "none";
+     document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
+     
+     /* Update Command Center icons visibility */
+     document.getElementById("caption-icon").style.display = "none";
+     document.getElementById("thumbnails-icon").style.display = "none";
+     document.getElementById("enter-fullscreen-icon").style.display = "none";
+   }
+   
+   var openPictureOverlay = function() {
+     
+     document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0);
+     
+     var pictureCaption = getPictureCatpion(this);
+     var pictureNumber = getPictureNumber(this);    
+     var imageURL = getPictureImageUrl(this);
+		 var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+ 
+     document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
+     document.getElementById("picture-caption").textContent = pictureCaption;
+     document.getElementById("picture-counter").textContent = pictureNumber + " / " + numberOfPictures; 
+
+     document.getElementById("single-picture-overlay").style.display = "flex";      
+     document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
+     document.getElementById("picture-caption").style.display = "block";
+     
+     /* Update Command Center icons visibility */
+     document.getElementById("caption-icon").style.display = "block";
+     document.getElementById("thumbnails-icon").style.display = "block";
+     document.getElementById("enter-fullscreen-icon").style.display = "block";
+     
+     updateCursors(pictureNumber);
+   };
+   
+   var nextPicture = function() {
+     
+     /* Get current picture number */
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+     
+     if (currentPictureNumber != numberOfPictures) {
+       /* Get data from next picture */
+       var nextPictureNumber = Number(currentPictureNumber) + 1
+       var nextPictureCollectionItemId = "picture-" + nextPictureNumber;
+       var nextPictureCollectionItem = document.getElementById(nextPictureCollectionItemId);
+
+       var nextPictureCaption = getPictureCatpion(nextPictureCollectionItem);     
+       var imageURL = getPictureImageUrl(nextPictureCollectionItem);
+       var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+
+       document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
+       document.getElementById("picture-caption").textContent = nextPictureCaption;
+       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
+
+       updateCursors(nextPictureNumber);
+     }
+   };
+   
+   var previousPicture = function() {
+     
+     /* Get current picture number */
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+     
+     if (currentPictureNumber != 1) {
+       /* Get data from previous picture */
+       var previousPictureNumber = Number(currentPictureNumber) - 1
+       var previousPictureCollectionItemId = "picture-" + previousPictureNumber;
+       var previousPictureCollectionItem = document.getElementById(previousPictureCollectionItemId);
+
+       var previousPictureCaption = getPictureCatpion(previousPictureCollectionItem);     
+       var imageURL = getPictureImageUrl(previousPictureCollectionItem);
+       var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+
+       document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
+       document.getElementById("picture-caption").textContent = previousPictureCaption;
+       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
+
+       updateCursors(previousPictureNumber);
+     }
+   };
+   
+ 
+	 for (var i = 0; i < thumbnails.length; i++) {
+     thumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
+   
+   /* Code for Picture Gallery Left / Right Actions */
+   var galleryUpperSection = document.getElementById("gallery-upper-section");
+   var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
+   var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
+   galleryLowerLeftSection.addEventListener('click', previousPicture, false);
+   galleryLowerRightSection.addEventListener('click', nextPicture, false);
+   
+   var pictureOverlayCloseButton = document.getElementById("single-picture-overlay-close-button");
+   var galleryUpperSection = document.getElementById("gallery-upper-section");
+   var thumbnailsIcon = document.getElementById("thumbnails-icon");
+
+   pictureOverlayCloseButton.addEventListener('click', closePictureOverlay, false);
+   galleryUpperSection.addEventListener('click', closePictureOverlay, false);
+   thumbnailsIcon.addEventListener('click', closePictureOverlay, false);
+   
+   var invertIconColors = function (number) {
+      console.log("invert");
+      var icons = document.getElementsByClassName('icon');
+      for (var i = 0; i < icons.length; i++) {
+         icons[i].style.webkitFilter = "invert(" + number + ")";
+      }
+      document.getElementById('gallery-lower-left-section').style.webkitFilter = "invert(" + number + ")";
+   }
+   
+   var nightModeIcon = document.getElementById("night-mode-icon");
+   nightModeIcon.addEventListener('click', function (){
+      invertIconColors(1);
+      }, false);
+      
+   var lightModeIcon = document.getElementById("light-mode-icon");
+   lightModeIcon.addEventListener('click', function (){
+      invertIconColors(0);
+      }, false);
+      
+   var enterFullscreen = function () {
+      document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
+   }
+   
+   var exitFullscreen = function () {
+      document.getElementById("exit-fullscreen-icon").style.display = "none";
+      document.getElementById("nav-bar").style.display = "block";
+      document.getElementById("close-icon-and-picture-counter").style.display = "flex";
+      document.getElementById("photo-series-text-wrapper").style.display = "grid";
+      document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
+   }
+   
+   var enterFullscreenIcon = document.getElementById("enter-fullscreen-icon");   
+   enterFullscreenIcon.addEventListener('click', enterFullscreen, false);   
+   
+   var exitFullscreenIcon = document.getElementById("exit-fullscreen-icon");   
+   exitFullscreenIcon.addEventListener('click', exitFullscreen, false); 
+   
+   $(document).on('keyup', function(event) {
+      if (event.which === 37) { 
+        	$('.gallery-lower-left-section').click();
+      } 
+      else if (event.which === 39) { 
+        	$('.gallery-lower-right-section').click();
+      } 
+      else if (event.which === 38 || event.which === 27) {
+        	document.getElementById("single-picture-overlay-close-button").click();
+      } 
+   });   
+</script>
