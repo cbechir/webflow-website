@@ -182,7 +182,15 @@
        updateCursors(previousPictureNumber);
      }
    };
-   
+
+   var goOneLayerUp = function() {
+     if (isFullscreenMode()) {
+       exitFullscreen();
+     } 
+     else {
+      closePictureOverlay();
+     }
+   }
 
    /* Section purpose: set up listeners for lightbox actions */
  
@@ -195,6 +203,7 @@
    var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
    galleryLowerLeftSection.addEventListener('click', previousPicture, false);
    galleryLowerRightSection.addEventListener('click', nextPicture, false);
+   galleryUpperSection.addEventListener('click', goOneLayerUp, false);
    
    var pictureOverlayCloseButton = document.getElementById("single-picture-overlay-close-button");
    var galleryUpperSection = document.getElementById("gallery-upper-section");
@@ -215,12 +224,7 @@
       }
       //Up Arrow Key or ESC key
       else if (event.which === 38 || event.which === 27) {
-          if (isFullscreenMode()) {
-            exitFullscreen();
-          }
-          else { 
-            document.getElementById("single-picture-overlay-close-button").click();
-          }
+          goOneLayerUp();
       } 
    });   
 
