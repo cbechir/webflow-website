@@ -1,33 +1,20 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-
 <script>
-  //init masonry grid 
-$(window).on("load", function() {  
-  $('.photo-series-pictures-data').imagesLoaded( function() {
-    $('.photo-series-pictures-data').masonry({
-      itemSelector: '.photo-series-picture-data',
-      horizontalOrder: true
-    });
-  });
-});
-</script>
-
-<!-- Script to give an ID to each picture collection item -->
-<script>
-  $(document).ready(function(){
-     $('.w-dyn-item').each(function() {
-        $(this).attr('id', 'picture-'+ $(this).children('.hidden-picture-number').text().trim());
-        console.log("Unique Ids added");
-     });
-  });
-</script>
+  
+   /* Section purpose: give an ID to each picture collection item */
+   $(document).ready(function(){
+      $('.w-dyn-item').each(function() {
+         $(this).attr('id', 'picture-'+ $(this).children('.hidden-picture-number').text().trim());
+         console.log("Unique Ids added");
+      });
+   });
 
 
-<script>
+
    var thumbnails = document.getElementsByClassName("photo-series-picture-data");
    var numberOfPictures = thumbnails.length; 
-   
+
+
+   /* Section purpose: helper functions */
    var getPictureCatpion = function(element) {
       return element.getElementsByClassName("hidden-picture-caption")[0].textContent; 
    };
@@ -43,7 +30,6 @@ $(window).on("load", function() {
    var wrapAroundUrlTerm = function(url) {
       return "url('" + url + "')"
    }
-   
    
    var isLeftEdgeReached = function(pictureNumber) {
      return pictureNumber == 1; 
@@ -67,18 +53,10 @@ $(window).on("load", function() {
         document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
      }
    }
-   
-   var closePictureOverlay = function() {
-     document.getElementById("single-picture-overlay").style.display = "none";      
-     document.getElementById("picture-caption").style.display = "none";
-     document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
+
+
+   /* Section purpose: main functions for lightbox actions */
      
-     /* Update Command Center icons visibility */
-     document.getElementById("caption-icon").style.display = "none";
-     document.getElementById("thumbnails-icon").style.display = "none";
-     document.getElementById("enter-fullscreen-icon").style.display = "none";
-   }
-   
    var openPictureOverlay = function() {
      
      document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0);
@@ -103,6 +81,17 @@ $(window).on("load", function() {
      
      updateCursors(pictureNumber);
    };
+
+   var closePictureOverlay = function() {
+     document.getElementById("single-picture-overlay").style.display = "none";      
+     document.getElementById("picture-caption").style.display = "none";
+     document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
+     
+     /* Update Command Center icons visibility */
+     document.getElementById("caption-icon").style.display = "none";
+     document.getElementById("thumbnails-icon").style.display = "none";
+     document.getElementById("enter-fullscreen-icon").style.display = "none";
+   }
    
    var nextPicture = function() {
      
@@ -150,12 +139,13 @@ $(window).on("load", function() {
      }
    };
    
+
+   /* Section purpose: set up listeners for lightbox actions */
  
 	 for (var i = 0; i < thumbnails.length; i++) {
      thumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
    
-   /* Code for Picture Gallery Left / Right Actions */
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
    var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
@@ -169,7 +159,22 @@ $(window).on("load", function() {
    pictureOverlayCloseButton.addEventListener('click', closePictureOverlay, false);
    galleryUpperSection.addEventListener('click', closePictureOverlay, false);
    thumbnailsIcon.addEventListener('click', closePictureOverlay, false);
+
+   $(document).on('keyup', function(event) {
+      if (event.which === 37) { 
+          $('.gallery-lower-left-section').click();
+      } 
+      else if (event.which === 39) { 
+          $('.gallery-lower-right-section').click();
+      } 
+      else if (event.which === 38 || event.which === 27) {
+          document.getElementById("single-picture-overlay-close-button").click();
+      } 
+   });   
    
+  
+   /* Section purpose: Night Mode */
+
    var invertIconColors = function (number) {
       console.log("invert");
       var icons = document.getElementsByClassName('icon');
@@ -188,6 +193,9 @@ $(window).on("load", function() {
    lightModeIcon.addEventListener('click', function (){
       invertIconColors(0);
       }, false);
+
+
+   /* Section purpose: Fullscreen Mode */
       
    var enterFullscreen = function () {
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
@@ -206,16 +214,5 @@ $(window).on("load", function() {
    
    var exitFullscreenIcon = document.getElementById("exit-fullscreen-icon");   
    exitFullscreenIcon.addEventListener('click', exitFullscreen, false); 
-   
-   $(document).on('keyup', function(event) {
-      if (event.which === 37) { 
-        	$('.gallery-lower-left-section').click();
-      } 
-      else if (event.which === 39) { 
-        	$('.gallery-lower-right-section').click();
-      } 
-      else if (event.which === 38 || event.which === 27) {
-        	document.getElementById("single-picture-overlay-close-button").click();
-      } 
-   });   
+
 </script>
