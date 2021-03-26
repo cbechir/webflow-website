@@ -1,5 +1,5 @@
 <script>
-  
+
    /* Section purpose: give an ID to each picture collection item */
    $(document).ready(function(){
       $('.w-dyn-item').each(function() {
@@ -168,6 +168,8 @@
           $('.gallery-lower-right-section').click();
       } 
       else if (event.which === 38 || event.which === 27) {
+          var isFullscreenMode = document.getElementById('nav-bar').style.display === "hidden"
+          console.log("isFullscreenMode: " + isFullscreenMode);
           document.getElementById("single-picture-overlay-close-button").click();
       } 
    });   
