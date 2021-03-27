@@ -81,22 +81,56 @@
    var enterWindowFullscreen = function () {
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "0px";
+      document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
    }
    
    var exitWindowFullscreen = function () {
       document.getElementById("exit-window-fullscreen-icon").style.display = "none";
+      document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("nav-bar").style.display = "block";
       document.getElementById("close-icon-and-picture-counter").style.display = "flex";
       document.getElementById("photo-series-text-wrapper").style.display = "grid";
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "10px";
    }
+
+   var enterBrowserFullscreen = function() {
+      var elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+      document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
+      document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
+    }
+
+    var exitBrowserFullscreen = function() {
+      var elem = document.documentElement;
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+      document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
+      document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
+    }
    
    var enterWindowFullscreenIcon = document.getElementById("enter-window-fullscreen-icon");   
    enterWindowFullscreenIcon.addEventListener('click', enterWindowFullscreen, false);   
    
    var exitWindowFullscreenIcon = document.getElementById("exit-window-fullscreen-icon");   
    exitWindowFullscreenIcon.addEventListener('click', exitWindowFullscreen, false); 
+
+   var enterBrowserFullscreenIcon = document.getElementById("enter-browser-fullscreen-icon");   
+   enterBrowserFullscreenIcon.addEventListener('click', enterBrowserFullscreen, false);   
+   
+   var exitBrowserFullscreenIcon = document.getElementById("exit-browser-fullscreen-icon");   
+   exitBrowserFullscreenIcon.addEventListener('click', exitBrowserFullscreen, false); 
 
 
    /* Section purpose: main functions for lightbox actions */
