@@ -87,7 +87,12 @@
       document.getElementById("picture-counter").style.display = "none";
 
       document.getElementById("exit-window-fullscreen-icon").style.display = "block";
-      document.getElementById("enter-window-fullscreen-icon").style.display = "none"
+      document.getElementById("enter-window-fullscreen-icon").style.display = "none";
+
+      document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "0px"; 
+      document.getElementById("fullscreen-navigation-icons").style.position = "fixed"; 
+      document.getElementById("fullscreen-navigation-icons").style.top = "10px"; 
+      document.getElementById("fullscreen-navigation-icons").style.position = "10px"; 
    }
    
    var exitWindowFullscreen = function () {
@@ -100,6 +105,9 @@
 
       document.getElementById("exit-window-fullscreen-icon").style.display = "none";
       document.getElementById("enter-window-fullscreen-icon").style.display = "block"
+
+      document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "50px"; 
+      document.getElementById("fullscreen-navigation-icons").style.position = "static"; 
    }
 
    var enterBrowserFullscreen = function() {
