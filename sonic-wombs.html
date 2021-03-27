@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+
 <script>
 
    /* Section purpose: give an ID to each picture collection item */
@@ -54,10 +57,6 @@
         document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
      }
    }
-   
-   
-  /* Masonary Grid for thumbnails */ 
-   window.addEventListener("load", triggerMasonaryGridOrdering); 
 
    var triggerMasonaryGridOrdering = function () {
       var elem = document.querySelector('.photo-series-pictures-data');
@@ -66,6 +65,9 @@
          horizontalOrder: true
       });
     };
+
+   /* Masonary Grid for thumbnails */ 
+   window.addEventListener("load", triggerMasonaryGridOrdering, false); 
 
    /* Section purpose: Night Mode */
 
