@@ -7,8 +7,6 @@
       });
    });
 
-
-
    var thumbnails = document.getElementsByClassName("photo-series-picture-data");
    var numberOfPictures = thumbnails.length; 
 
@@ -38,7 +36,7 @@
      return pictureNumber == numberOfPictures; 
    }
 
-   var isFullscreenMode = function() {
+   var isWindowFullscreenMode = function() {
      return document.getElementById('nav-bar').style.display === "none";
    }
    
@@ -78,25 +76,27 @@
       }, false);
 
 
-   /* Section purpose: Fullscreen Mode */
+   /* Section purpose: Fullscreen Modes (Window and Browser) */
       
-   var enterFullscreen = function () {
+   var enteWindowFullscreen = function () {
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
+      document.getElementById("photo-series-gallery-wrapper").style.marginRight = "0px";
    }
    
-   var exitFullscreen = function () {
+   var exitWindowFullscreen = function () {
       document.getElementById("exit-fullscreen-icon").style.display = "none";
       document.getElementById("nav-bar").style.display = "block";
       document.getElementById("close-icon-and-picture-counter").style.display = "flex";
       document.getElementById("photo-series-text-wrapper").style.display = "grid";
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
+      document.getElementById("photo-series-gallery-wrapper").style.marginRight = "10px";
    }
    
-   var enterFullscreenIcon = document.getElementById("enter-fullscreen-icon");   
-   enterFullscreenIcon.addEventListener('click', enterFullscreen, false);   
+   var enterWindowFullscreenIcon = document.getElementById("enter-window-fullscreen-icon");   
+   enterWindowFullscreenIcon.addEventListener('click', enterWindowFullscreen, false);   
    
-   var exitFullscreenIcon = document.getElementById("exit-fullscreen-icon");   
-   exitFullscreenIcon.addEventListener('click', exitFullscreen, false); 
+   var exitWindowFullscreenIcon = document.getElementById("exit-window-fullscreen-icon");   
+   exitWindowFullscreenIcon.addEventListener('click', exitWindowFullscreen, false); 
 
 
    /* Section purpose: main functions for lightbox actions */
@@ -121,7 +121,7 @@
      /* Update Command Center icons visibility */
      document.getElementById("caption-icon").style.display = "block";
      document.getElementById("thumbnails-icon").style.display = "block";
-     document.getElementById("enter-fullscreen-icon").style.display = "block";
+     document.getElementById("enter-window-fullscreen-icon").style.display = "block";
      
      updateCursors(pictureNumber);
    };
@@ -134,7 +134,7 @@
      /* Update Command Center icons visibility */
      document.getElementById("caption-icon").style.display = "none";
      document.getElementById("thumbnails-icon").style.display = "none";
-     document.getElementById("enter-fullscreen-icon").style.display = "none";
+     document.getElementById("enter-window-fullscreen-icon").style.display = "none";
    }
    
    var nextPicture = function() {
@@ -184,8 +184,8 @@
    };
 
    var goOneLayerUp = function() {
-     if (isFullscreenMode()) {
-       exitFullscreen();
+     if (isWindowFullscreenMode()) {
+       exitWindowFullscreen();
      } 
      else {
       closePictureOverlay();
@@ -194,7 +194,7 @@
 
    /* Section purpose: set up listeners for lightbox actions */
  
-	 for (var i = 0; i < thumbnails.length; i++) {
+   for (var i = 0; i < thumbnails.length; i++) {
      thumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
    
@@ -221,7 +221,7 @@
       else if (event.which === 39) { 
           $('.gallery-lower-right-section').click();
       }
-      //Up Arrow Key or ESC key
+      // Up Arrow Key or ESC key
       else if (event.which === 38 || event.which === 27) {
           goOneLayerUp();
       } 
