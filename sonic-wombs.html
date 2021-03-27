@@ -54,6 +54,18 @@
         document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
      }
    }
+   
+   
+  /* Masonary Grid for thumbnails */ 
+   window.addEventListener("load", triggerMasonaryGridOrdering); 
+
+   var triggerMasonaryGridOrdering = function () {
+      var elem = document.querySelector('.photo-series-pictures-data');
+      var msnry = new Masonry(elem, {
+         itemSelector: '.photo-series-picture-data',
+         horizontalOrder: true
+      });
+    };
 
    /* Section purpose: Night Mode */
 
@@ -121,6 +133,7 @@
       }
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
+      triggerMasonaryGridOrdering();
     }
 
     var exitBrowserFullscreen = function() {
