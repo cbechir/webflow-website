@@ -81,17 +81,25 @@
    var enterWindowFullscreen = function () {
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "0px";
-      document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
+      document.getElementById("nav-bar").style.display = "none";
+      ;
+      document.getElementById("photo-series-text-wrapper").style.display = "none";
+      document.getElementById("picture-counter").style.display = "none";
+
+      document.getElementById("exit-window-fullscreen-icon").style.display = "block";
+      document.getElementById("enter-window-fullscreen-icon").style.display = "none"
    }
    
    var exitWindowFullscreen = function () {
-      document.getElementById("exit-window-fullscreen-icon").style.display = "none";
-      document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
-      document.getElementById("nav-bar").style.display = "block";
-      document.getElementById("fullscreen-icons-and-picture-counter").style.display = "flex";
-      document.getElementById("photo-series-text-wrapper").style.display = "grid";
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "10px";
+      document.getElementById("nav-bar").style.display = "block";
+
+      document.getElementById("photo-series-text-wrapper").style.display = "grid";
+      document.getElementById("picture-counter").style.display = "block";
+
+      document.getElementById("exit-window-fullscreen-icon").style.display = "none";
+      document.getElementById("enter-window-fullscreen-icon").style.display = "block"
    }
 
    var enterBrowserFullscreen = function() {
@@ -103,7 +111,6 @@
       } else if (elem.msRequestFullscreen) { /* IE11 */
         elem.msRequestFullscreen();
       }
-      document.getElementById("exit-window-fullscreen-icon").style.display = "none";
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
     }
