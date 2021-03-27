@@ -124,6 +124,7 @@
     }
 
     var exitBrowserFullscreen = function() {
+      document.exitFullscreen();
       if (document.exitFullscreen) {
         console.log("calling exitFullscreen")
         document.exitFullscreen();
@@ -157,15 +158,11 @@
            const windowHeight = window.innerHeight * window.devicePixelRatio;
            const screenWidth = window.screen.width;
            const screenHeight = window.screen.height;
-           console.log(windowWidth/screenWidth);
-           console.log(windowHeight/screenHeight);
            if (((windowWidth/screenWidth)>=0.95) && ((windowHeight/screenHeight)>=0.95)) {
-               console.log("Fullscreen");
                document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
                document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
            }
            else {
-               console.log("Not Fullscreen");
                document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
                document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
            }
