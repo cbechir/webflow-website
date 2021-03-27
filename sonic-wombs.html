@@ -103,6 +103,7 @@
       } else if (elem.msRequestFullscreen) { /* IE11 */
         elem.msRequestFullscreen();
       }
+      document.getElementById("exit-window-fullscreen-icon").style.display = "none";
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
     }
