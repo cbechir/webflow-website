@@ -92,7 +92,7 @@
       document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "0px"; 
       document.getElementById("fullscreen-navigation-icons").style.position = "fixed"; 
       document.getElementById("fullscreen-navigation-icons").style.top = "10px"; 
-      document.getElementById("fullscreen-navigation-icons").style.position = "10px"; 
+      document.getElementById("fullscreen-navigation-icons").style.right = "10px"; 
    }
    
    var exitWindowFullscreen = function () {
@@ -185,6 +185,9 @@
      document.getElementById("caption-icon").style.display = "none";
      document.getElementById("thumbnails-icon").style.display = "none";
      document.getElementById("enter-window-fullscreen-icon").style.display = "none";
+
+     /* Force closing window fullscreen to go back to normal view when displaying thumbnails */ 
+     exitWindowFullscreen();
    }
    
    var nextPicture = function() {
