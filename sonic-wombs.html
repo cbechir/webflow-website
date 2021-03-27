@@ -88,7 +88,7 @@
       document.getElementById("exit-window-fullscreen-icon").style.display = "none";
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("nav-bar").style.display = "block";
-      document.getElementById("close-icon-and-picture-counter").style.display = "flex";
+      document.getElementById("fullscreen-icons-and-picture-counter").style.display = "flex";
       document.getElementById("photo-series-text-wrapper").style.display = "grid";
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "10px";
@@ -240,11 +240,11 @@
    galleryLowerRightSection.addEventListener('click', nextPicture, false);
    galleryUpperSection.addEventListener('click', goOneLayerUp, false);
    
-   var pictureOverlayCloseButton = document.getElementById("single-picture-overlay-close-button");
+   var pictureOverlayCloseIcon = document.getElementById("single-picture-overlay-close-icon");
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var thumbnailsIcon = document.getElementById("thumbnails-icon");
 
-   pictureOverlayCloseButton.addEventListener('click', closePictureOverlay, false);
+   pictureOverlayCloseIcon.addEventListener('click', closePictureOverlay, false);
    thumbnailsIcon.addEventListener('click', closePictureOverlay, false);
 
    $(document).on('keyup', function(event) {
