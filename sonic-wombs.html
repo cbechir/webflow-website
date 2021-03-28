@@ -152,8 +152,10 @@
       triggerMasonaryGridOrdering();
     }
    
-   var enterWindowFullscreenIcon = document.getElementById("enter-window-fullscreen-icon");   
-   enterWindowFullscreenIcon.addEventListener('click', enterWindowFullscreen, false);   
+   var enterWindowFullscreenIcon = document.getElementById("enter-window-fullscreen-icon");
+   var enterWindowFullscreenMobileIcon = document.getElementById("enter-window-fullscreen-mobile-icon");      
+   enterWindowFullscreenIcon.addEventListener('click', enterWindowFullscreen, false);
+   enterWindowFullscreenMobileIcon.addEventListener('click', enterWindowFullscreen, false);      
    
    var exitWindowFullscreenIcon = document.getElementById("exit-window-fullscreen-icon");   
    exitWindowFullscreenIcon.addEventListener('click', exitWindowFullscreen, false); 
