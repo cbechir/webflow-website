@@ -131,7 +131,7 @@
       another icon is used, it's always displayed on mobile, and we don't want to show the desktop icon here,
       else we end up with two icons, the mobile one and the desktop one. */
       if (!isMobile()) {
-        document.getElementById("enter-window-fullscreen-icon").style.display = "block"
+        document.getElementById("enter-window-fullscreen-icon").style.display = "block";
       }
       
       document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "50px"; 
@@ -224,7 +224,11 @@
      /* Update Command Center icons visibility */
      document.getElementById("caption-icon").style.display = "block";
      document.getElementById("thumbnails-icon").style.display = "block";
-     // document.getElementById("enter-window-fullscreen-icon").style.display = "block";
+
+     /* This mobile window fullscreen icon is hidden by default so it doesn't show up on the thumbnail page */
+     if (isMobile()) {
+        document.getElementById("enter-window-fullscreen-mobile-icon").style.display = "block";
+      }
      
      updateCursors(pictureNumber);
    };
@@ -237,7 +241,6 @@
      /* Update Command Center icons visibility */
      document.getElementById("caption-icon").style.display = "none";
      document.getElementById("thumbnails-icon").style.display = "none";
-     //document.getElementById("enter-window-fullscreen-icon").style.display = "none";
 
      /* If closing picture overlay while being in window fullscreen mode, exit wind window fullscreen too
      so we go back the normal view (with text) when displaying thumbnails */ 
