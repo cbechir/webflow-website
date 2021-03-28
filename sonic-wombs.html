@@ -223,8 +223,11 @@
      document.getElementById("thumbnails-icon").style.display = "none";
      //document.getElementById("enter-window-fullscreen-icon").style.display = "none";
 
-     /* Force closing window fullscreen to go back to normal view when displaying thumbnails */ 
-     exitWindowFullscreen();
+     /* If closing picture overlay while being in window fullscreen mode, exit wind window fullscreen too
+     so we go back the normal view (with text) when displaying thumbnails */ 
+     if (isWindowFullscreenMode()) {
+        exitWindowFullscreen(); 
+     }
    }
    
    var nextPicture = function() {
