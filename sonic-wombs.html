@@ -181,24 +181,26 @@
    exitBrowserFullscreenIcon.addEventListener('click', exitBrowserFullscreen, false); 
 
 
-   /* Event listener to flip fullscreen icon if user manually enters fullscreen by clicking
+   /* For desktop only: event listener to flip fullscreen icon if user manually enters fullscreen by clicking
    on F11 or on browser fullscreen icon */
    window.addEventListener("resize", () => {
-       setTimeout(() => {
-           const windowWidth = window.innerWidth * window.devicePixelRatio;
-           const windowHeight = window.innerHeight * window.devicePixelRatio;
-           const screenWidth = window.screen.width;
-           const screenHeight = window.screen.height;
-           if (((windowWidth/screenWidth)>=0.95) && ((windowHeight/screenHeight)>=0.95)) {
-               document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
-               document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
-           }
-           else {
-               document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
-               document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
-           }
-       }, 100);
-   })
+       if (!isMobile()) {
+           setTimeout(() => {
+             const windowWidth = window.innerWidth * window.devicePixelRatio;
+             const windowHeight = window.innerHeight * window.devicePixelRatio;
+             const screenWidth = window.screen.width;
+             const screenHeight = window.screen.height;
+             if (((windowWidth/screenWidth)>=0.95) && ((windowHeight/screenHeight)>=0.95)) {
+                 document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
+                 document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
+             }
+             else {
+                 document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
+                 document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
+             }
+         }, 100); 
+       }
+   });
     
 
 
