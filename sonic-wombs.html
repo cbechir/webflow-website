@@ -249,6 +249,11 @@
      if (isWindowFullscreenMode()) {
         exitWindowFullscreen(); 
      }
+
+    /* If on mobile, hide the mobile window fullscreen icon so it doesn't show up on the thumbnail page */
+     if (isMobile()) {
+       document.getElementById("enter-window-fullscreen-mobile-icon").style.display = "none";
+     }
    }
    
    var nextPicture = function() {
