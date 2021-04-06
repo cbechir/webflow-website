@@ -249,8 +249,11 @@
      if (isMobile()) {
         document.getElementById("enter-window-fullscreen-mobile-icon").style.display = "block";
       }
-     
+  
      updateCursors(pictureNumber);
+
+     // Make the title clickable. On click, go back to thumbnails view.
+     document.getElementById("photography-series-title").style.cursor = "pointer";
    };
 
    var closePictureOverlay = function() {
@@ -271,6 +274,10 @@
      if (isMobile()) {
        document.getElementById("enter-window-fullscreen-mobile-icon").style.display = "none";
      }
+
+     // In thumbnail view, clicking on the cursor shouldn't do anything. Therefore, reset the title cursor to 'auto' 
+     // not to confuse the user
+     document.getElementById("photography-series-title").style.cursor = "auto";
    }
    
    var nextPicture = function() {
@@ -344,9 +351,11 @@
    var pictureOverlayCloseIcon = document.getElementById("single-picture-overlay-close-icon");
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var thumbnailsIcon = document.getElementById("thumbnails-icon");
+   var seriesTitle = document.getElementById("photography-series-title");
 
    pictureOverlayCloseIcon.addEventListener('click', closePictureOverlay, false);
    thumbnailsIcon.addEventListener('click', closePictureOverlay, false);
+   seriesTitle.addEventListener('click', closePictureOverlay, false);
 
    $(document).on('keyup', function(event) {
       // Left Arrow Key
