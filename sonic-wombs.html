@@ -157,24 +157,14 @@
    }
 
    var enterBrowserFullscreen = function() {
-      if (!screenfull.isFullScreen) {
-        screenfull.request();
-      }
-      else {
-        console.log("Browser is already in fullscreen")
-      }
+      screenfull.request();
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
     }
 
     var exitBrowserFullscreen = function() {
-      if (screenfull.isFullScreen) {
-        screenfull.exit();
-      }
-      else {
-        console.log("Browser is not in fullscreen")
-      }
+      screenfull.exit();
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
