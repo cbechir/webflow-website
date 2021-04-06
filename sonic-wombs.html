@@ -111,6 +111,8 @@
 
       if (isMobile()) {
         document.getElementById("exit-window-fullscreen-mobile-icon").style.display = "block";
+        // On mobile, reset to single picture overlay top position to center the picture
+        document.getElementById("single-picture-overlay").style.top = "0px";
       }
       else {
         document.getElementById("exit-window-fullscreen-icon").style.display = "block";
@@ -133,6 +135,9 @@
 
       if (isMobile()) {
         document.getElementById("exit-window-fullscreen-mobile-icon").style.display = "none";
+        // On mobile, reset the single picture overlay top position to its default so the picture doesn't overlap with the caption
+        document.getElementById("single-picture-overlay").style.top = "-20px";
+
       }
       else {
         document.getElementById("exit-window-fullscreen-icon").style.display = "none";
