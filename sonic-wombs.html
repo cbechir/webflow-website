@@ -1,6 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script> <!-- Script for Masonary Grid for Thumbnails -->
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script> <!-- Script to wait until images are loaded before constructing Masonary Grid -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"></script> <!-- Script for fullscreen functionality -->
 
 <script>
 
@@ -157,9 +157,11 @@
    }
 
    var enterBrowserFullscreen = function() {
-      if (screenfull.isEnabled) {
-        console.log("screenfull enabled, requesting fullscreen");
+      if (!screenfull.isFullScreen) {
         screenfull.request();
+      }
+      else {
+        console.log("Browser is already in fullscreen")
       }
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
@@ -167,7 +169,13 @@
     }
 
     var exitBrowserFullscreen = function() {
-      screenfull.exit();
+      if (screenfull.isFullScreen) {
+        screenfull.exit();
+      }
+      else {
+        console.log("Browser is not in fullscreen")
+      }
+
       document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
       triggerMasonaryGridOrdering();
@@ -188,29 +196,7 @@
    
    var exitBrowserFullscreenIcon = document.getElementById("exit-browser-fullscreen-icon");   
    exitBrowserFullscreenIcon.addEventListener('click', exitBrowserFullscreen, false); 
-
-
-   /* For desktop only: event listener to flip fullscreen icon if user manually enters fullscreen by clicking
-   on F11 or on browser fullscreen icon */
-   /*window.addEventListener("resize", () => {
-       if (!isMobile()) {
-           setTimeout(() => {
-             const windowWidth = window.innerWidth * window.devicePixelRatio;
-             const windowHeight = window.innerHeight * window.devicePixelRatio;
-             const screenWidth = window.screen.width;
-             const screenHeight = window.screen.height;
-             if (((windowWidth/screenWidth)>=0.95) && ((windowHeight/screenHeight)>=0.95)) {
-                 document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
-                 document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
-             }
-             else {
-                 document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
-                 document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
-             }
-         }, 100); 
-       }
-   });*/
-    
+  
 
 
    /* Section purpose: main functions for lightbox actions */
