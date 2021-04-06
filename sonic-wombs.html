@@ -169,7 +169,6 @@
     }
 
     var exitBrowserFullscreen = function() {
-      document.exitFullscreen();
       if (document.exitFullscreen) {
         console.log("calling exitFullscreen")
         document.exitFullscreen();
@@ -347,6 +346,7 @@
    galleryLowerLeftSection.addEventListener('click', previousPicture, false);
    galleryLowerRightSection.addEventListener('click', nextPicture, false);
    galleryUpperSection.addEventListener('click', goOneLayerUp, false);
+
    
    var pictureOverlayCloseIcon = document.getElementById("single-picture-overlay-close-icon");
    var galleryUpperSection = document.getElementById("gallery-upper-section");
