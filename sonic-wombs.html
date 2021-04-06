@@ -1,4 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
 <script>
@@ -156,27 +157,17 @@
    }
 
    var enterBrowserFullscreen = function() {
-      var elem = document.documentElement;
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) { /* Safari */
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { /* IE11 */
-        elem.msRequestFullscreen();
+      if (screenfull.isEnabled) {
+        console.log("screenfull enabled, requesting fullscreen");
+        screenfull.request();
       }
+
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
     }
 
     var exitBrowserFullscreen = function() {
-      if (document.exitFullscreen) {
-        console.log("calling exitFullscreen")
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) { /* Safari */
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) { /* IE11 */
-        document.msExitFullscreen();
-      }
+      screenfull.exit();
       document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
       triggerMasonaryGridOrdering();
