@@ -109,7 +109,12 @@
       document.getElementById("photo-series-text-wrapper").style.display = "none";
       document.getElementById("picture-counter").style.display = "none";
 
-      document.getElementById("exit-window-fullscreen-icon").style.display = "block";
+      if (isMobile()) {
+        document.getElementById("exit-window-fullscreen-icon-mobile").style.display = "block";
+      }
+      else {
+        document.getElementById("exit-window-fullscreen-icon").style.display = "block";
+      }
       document.getElementById("enter-window-fullscreen-icon").style.display = "none";
 
       document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "0px"; 
@@ -126,7 +131,14 @@
       document.getElementById("photo-series-text-wrapper").style.display = "grid";
       document.getElementById("picture-counter").style.display = "block";
 
-      document.getElementById("exit-window-fullscreen-icon").style.display = "none";
+      if (isMobile()) {
+        document.getElementById("exit-window-fullscreen-icon-mobile").style.display = "none";
+      }
+      else {
+        document.getElementById("exit-window-fullscreen-icon").style.display = "none";
+      }
+      
+
       /* Only show the desktop "enter fullscreen" icon if we're on desktop. That is because on Mobile
       another icon is used, it's always displayed on mobile, and we don't want to show the desktop icon here,
       else we end up with two icons, the mobile one and the desktop one. */
@@ -172,7 +184,9 @@
    enterWindowFullscreenMobileIcon.addEventListener('click', enterWindowFullscreen, false);      
    
    var exitWindowFullscreenIcon = document.getElementById("exit-window-fullscreen-icon");   
+   var exitWindowFullscreenMobileIconMobile = document.getElementById("exit-window-fullscreen-mobile-icon");   
    exitWindowFullscreenIcon.addEventListener('click', exitWindowFullscreen, false); 
+   exitWindowFullscreenMobileIconMobile.addEventListener('click', exitWindowFullscreen, false); 
 
    var enterBrowserFullscreenIcon = document.getElementById("enter-browser-fullscreen-icon");   
    enterBrowserFullscreenIcon.addEventListener('click', enterBrowserFullscreen, false);   
