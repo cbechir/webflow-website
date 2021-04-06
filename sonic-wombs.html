@@ -50,7 +50,7 @@
    }
 
    var isWindowFullscreenMode = function() {
-     return document.getElementById('nav-bar').style.display === "none";
+     return document.getElementById('navbar').style.display === "none";
    }
    
    var updateCursors = function(pictureNumber) {
@@ -69,7 +69,6 @@
    }
 
    var triggerMasonaryGridOrdering = function () {
-      console.log("masonry grid triggered");
       var elem = document.querySelector('.photo-series-pictures-data');
       var msnry = new Masonry(elem, {
          itemSelector: '.photo-series-picture-data',
@@ -106,7 +105,7 @@
    var enterWindowFullscreen = function () {
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "0px";
-      document.getElementById("nav-bar").style.display = "none";
+      document.getElementById("navbar").style.display = "none";
       ;
       document.getElementById("photo-series-text-wrapper").style.display = "none";
       document.getElementById("picture-counter").style.display = "none";
@@ -130,7 +129,7 @@
    var exitWindowFullscreen = function () {
       document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
       document.getElementById("photo-series-gallery-wrapper").style.marginRight = "10px";
-      document.getElementById("nav-bar").style.display = "block";
+      document.getElementById("navbar").style.display = "block";
 
       document.getElementById("photo-series-text-wrapper").style.display = "grid";
       document.getElementById("picture-counter").style.display = "block";
@@ -169,6 +168,8 @@
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
+
+      // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
       triggerMasonaryGridOrdering();
     }
    
@@ -245,6 +246,8 @@
      // In thumbnail view, clicking on the cursor shouldn't do anything. Therefore, reset the title cursor to 'auto' 
      // not to confuse the user
      document.getElementById("photography-series-title").style.cursor = "auto";
+     
+     // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
      triggerMasonaryGridOrdering();
    }
    
