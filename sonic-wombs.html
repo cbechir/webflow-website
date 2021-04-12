@@ -102,23 +102,20 @@
 
    /* Section purpose: Fullscreen Modes (Window and Browser) */
       
-   var enterWindowFullscreen = function () {
-      document.getElementById("photo-series-page-wrapper").style.paddingTop = "0px";
-      document.getElementById("photo-series-gallery-wrapper").style.marginRight = "0px";
-      document.getElementById("navbar").style.display = "none";
-      ;
-      document.getElementById("photo-series-text-wrapper").style.display = "none";
+   var hideText = function () {
+    
+      document.getElementById("picture-caption").style.display = "none";
       document.getElementById("picture-counter").style.display = "none";
 
       if (isMobile()) {
-        document.getElementById("exit-window-fullscreen-mobile-icon").style.display = "block";
+        document.getElementById("show-text-icon-mobile").style.display = "block";
         // On mobile, reset to single picture overlay top position to center the picture
         document.getElementById("single-picture-overlay").style.top = "0px";
       }
       else {
-        document.getElementById("exit-window-fullscreen-icon").style.display = "block";
+        document.getElementById("show-text-icon").style.display = "block";
       }
-      document.getElementById("enter-window-fullscreen-icon").style.display = "none";
+      document.getElementById("hide-text-icon").style.display = "none";
 
       document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "0px"; 
       document.getElementById("fullscreen-navigation-icons").style.position = "fixed"; 
@@ -126,22 +123,18 @@
       document.getElementById("fullscreen-navigation-icons").style.right = "10px"; 
    }
    
-   var exitWindowFullscreen = function () {
-      document.getElementById("photo-series-page-wrapper").style.paddingTop = "30px";
-      document.getElementById("photo-series-gallery-wrapper").style.marginRight = "10px";
-      document.getElementById("navbar").style.display = "block";
-
-      document.getElementById("photo-series-text-wrapper").style.display = "grid";
+   var showText = function () {
+      document.getElementById("picture-caption").style.display = "block";
       document.getElementById("picture-counter").style.display = "block";
 
       if (isMobile()) {
-        document.getElementById("exit-window-fullscreen-mobile-icon").style.display = "none";
+        document.getElementById("show-text-icon-mobile").style.display = "none";
         // On mobile, reset the single picture overlay top position to its default so the picture doesn't overlap with the caption
         document.getElementById("single-picture-overlay").style.top = "-20px";
 
       }
       else {
-        document.getElementById("exit-window-fullscreen-icon").style.display = "none";
+        document.getElementById("show-text-icon").style.display = "none";
       }
       
 
@@ -149,7 +142,7 @@
       another icon is used, it's always displayed on mobile, and we don't want to show the desktop icon here,
       else we end up with two icons, the mobile one and the desktop one. */
       if (!isMobile()) {
-        document.getElementById("enter-window-fullscreen-icon").style.display = "block";
+        document.getElementById("hide-text-icon").style.display = "block";
       }
       
       document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "50px"; 
@@ -173,15 +166,15 @@
       triggerMasonaryGridOrdering();
     }
    
-   var enterWindowFullscreenIcon = document.getElementById("enter-window-fullscreen-icon");
-   var enterWindowFullscreenMobileIcon = document.getElementById("enter-window-fullscreen-mobile-icon");      
-   enterWindowFullscreenIcon.addEventListener('click', enterWindowFullscreen, false);
-   enterWindowFullscreenMobileIcon.addEventListener('click', enterWindowFullscreen, false);      
+   var hideTextIcon = document.getElementById("hide-text-icon");
+   var hideTextIconMobile = document.getElementById("hide-text-icon-mobile");      
+   hideTextIcon.addEventListener('click', hideText, false);
+   hideTextIconMobile.addEventListener('click', hideText, false);      
    
-   var exitWindowFullscreenIcon = document.getElementById("exit-window-fullscreen-icon");   
-   var exitWindowFullscreenMobileIconMobile = document.getElementById("exit-window-fullscreen-mobile-icon");   
-   exitWindowFullscreenIcon.addEventListener('click', exitWindowFullscreen, false); 
-   exitWindowFullscreenMobileIconMobile.addEventListener('click', exitWindowFullscreen, false); 
+   var showTextIcon = document.getElementById("show-text-icon");   
+   var showTextIconMobile = document.getElementById("show-text-icon-mobile");   
+   showTextIcon.addEventListener('click', showText, false); 
+   showTextIconMobile.addEventListener('click', showText, false); 
 
    var enterBrowserFullscreenIcon = document.getElementById("enter-browser-fullscreen-icon");   
    enterBrowserFullscreenIcon.addEventListener('click', enterBrowserFullscreen, false);   
@@ -219,7 +212,7 @@
 
      /* This mobile window fullscreen icon is hidden by default so it doesn't show up on the thumbnail page */
      if (isMobile()) {
-        document.getElementById("enter-window-fullscreen-mobile-icon").style.display = "block";
+        document.getElementById("hide-text-icon-mobile").style.display = "block";
       }
   
      updateCursors(pictureNumber);
@@ -249,7 +242,7 @@
 
     /* If on mobile, hide the mobile window fullscreen icon so it doesn't show up on the thumbnail page */
      if (isMobile()) {
-       document.getElementById("enter-window-fullscreen-mobile-icon").style.display = "none";
+       document.getElementById("hide-text-icon-mobile").style.display = "none";
      }
 
      // In thumbnail view, clicking on the cursor shouldn't do anything. Therefore, reset the title cursor to 'auto' 
