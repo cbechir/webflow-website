@@ -197,6 +197,7 @@
      
 
      document.getElementById("navbar").style.display = "none";
+     document.getElementsByTagName('body')[0].style.overflow = "hidden";
      
      document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0); 
      
@@ -229,8 +230,10 @@
 
    var closePictureOverlay = function() {
 
+
      document.getElementById("navbar").style.display = "block";
-     
+     document.getElementsByTagName('body')[0].style.overflow = "visible";
+
      document.getElementById("single-picture-overlay").style.display = "none";      
      document.getElementById("picture-caption").style.display = "none";
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
