@@ -218,19 +218,6 @@
      document.getElementById("picture-caption").style.display = "none";
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
      
-     /* Update Command Center icons visibility */
-     document.getElementById("thumbnails-icon").style.display = "none";
-
-     /* If closing picture overlay while being in window fullscreen mode, exit wind window fullscreen too
-     so we go back the normal view (with text) when displaying thumbnails */ 
-     if (isWindowFullscreenMode()) {
-        exitWindowFullscreen(); 
-     }
-
-     // In thumbnail view, clicking on the cursor shouldn't do anything. Therefore, reset the title cursor to 'auto' 
-     // not to confuse the user
-     document.getElementById("photography-series-title").style.cursor = "auto";
-     
      // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
      triggerMasonaryGridOrdering();
    }
@@ -283,12 +270,7 @@
 
 
    var goOneLayerUp = function() {
-     if (isWindowFullscreenMode()) {
-       exitWindowFullscreen();
-     } 
-     else {
       closePictureOverlay();
-     }
    }
 
       /* Mobile swipe left / right / up gestures */
