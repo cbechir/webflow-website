@@ -197,14 +197,10 @@
 
      document.getElementById("single-picture-overlay").style.display = "flex";      
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
-     
-     /* Update Command Center icons visibility */
-     document.getElementById("thumbnails-icon").style.display = "block";
   
      updateCursors(pictureNumber);
 
-     // Make the title clickable. On click, go back to thumbnails view.
-     document.getElementById("photography-series-title").style.cursor = "pointer";
+     
    };
 
    var closePictureOverlay = function() {
@@ -268,11 +264,7 @@
    };
 
 
-   var goOneLayerUp = function() {
-      closePictureOverlay();
-   }
-
-      /* Mobile swipe left / right / up gestures */
+  /* Mobile swipe left / right / up gestures */
 
    var xDown = null;                                                        
    var yDown = null;
@@ -307,10 +299,10 @@
            }                       
        } else {
            if ( yDiff > 0 ) {
-               goOneLayerUp();
+               closePictureOverlay();
 
            } else { 
-               goOneLayerUp();
+               closePictureOverlay();
            }                                                                 
        }
 
@@ -334,17 +326,12 @@
    var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
    galleryLowerLeftSection.addEventListener('click', previousPicture, false);
    galleryLowerRightSection.addEventListener('click', nextPicture, false);
-   galleryUpperSection.addEventListener('click', goOneLayerUp, false);
+   galleryUpperSection.addEventListener('click', closePictureOverlay, false);
 
    
    var pictureOverlayCloseIcon = document.getElementById("single-picture-overlay-close-icon");
-   var galleryUpperSection = document.getElementById("gallery-upper-section");
-   var thumbnailsIcon = document.getElementById("thumbnails-icon");
-   var seriesTitle = document.getElementById("photography-series-title");
-
    pictureOverlayCloseIcon.addEventListener('click', closePictureOverlay, false);
-   thumbnailsIcon.addEventListener('click', closePictureOverlay, false);
-   seriesTitle.addEventListener('click', closePictureOverlay, false);
+   
 
    $(document).on('keyup', function(event) {
       // Left Arrow Key
@@ -357,7 +344,7 @@
       }
       // Up Arrow Key or ESC key
       else if (event.which === 38 || event.which === 27) {
-          goOneLayerUp();
+          closePictureOverlay();
       } 
    });   
 
