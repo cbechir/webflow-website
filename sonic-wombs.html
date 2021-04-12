@@ -107,14 +107,8 @@
       document.getElementById("picture-caption").style.display = "none";
       document.getElementById("picture-counter").style.display = "none";
 
-      if (isMobile()) {
-        document.getElementById("show-text-icon-mobile").style.display = "block";
-        // On mobile, reset to single picture overlay top position to center the picture
-        document.getElementById("single-picture-overlay").style.top = "0px";
-      }
-      else {
-        document.getElementById("show-text-icon").style.display = "block";
-      }
+  
+      document.getElementById("show-text-icon").style.display = "block";
       document.getElementById("hide-text-icon").style.display = "none";
 
       document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "0px"; 
@@ -128,7 +122,7 @@
       document.getElementById("picture-counter").style.display = "block";
 
       if (isMobile()) {
-        document.getElementById("show-text-icon-mobile").style.display = "none";
+        document.getElementById("show-text-icon").style.display = "none";
         // On mobile, reset the single picture overlay top position to its default so the picture doesn't overlap with the caption
         document.getElementById("single-picture-overlay").style.top = "-20px";
 
@@ -145,7 +139,7 @@
         document.getElementById("hide-text-icon").style.display = "block";
       }
       
-      document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "50px"; 
+      document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "80px"; 
       document.getElementById("fullscreen-navigation-icons").style.position = "static"; 
    }
 
@@ -167,14 +161,10 @@
     }
    
    var hideTextIcon = document.getElementById("hide-text-icon");
-   var hideTextIconMobile = document.getElementById("hide-text-icon-mobile");      
    hideTextIcon.addEventListener('click', hideText, false);
-   hideTextIconMobile.addEventListener('click', hideText, false);      
    
    var showTextIcon = document.getElementById("show-text-icon");   
-   var showTextIconMobile = document.getElementById("show-text-icon-mobile");   
    showTextIcon.addEventListener('click', showText, false); 
-   showTextIconMobile.addEventListener('click', showText, false); 
 
    var enterBrowserFullscreenIcon = document.getElementById("enter-browser-fullscreen-icon");   
    enterBrowserFullscreenIcon.addEventListener('click', enterBrowserFullscreen, false);   
@@ -209,11 +199,6 @@
      
      /* Update Command Center icons visibility */
      document.getElementById("thumbnails-icon").style.display = "block";
-
-     /* This mobile window fullscreen icon is hidden by default so it doesn't show up on the thumbnail page */
-     if (isMobile()) {
-        document.getElementById("hide-text-icon-mobile").style.display = "block";
-      }
   
      updateCursors(pictureNumber);
 
@@ -238,11 +223,6 @@
      so we go back the normal view (with text) when displaying thumbnails */ 
      if (isWindowFullscreenMode()) {
         exitWindowFullscreen(); 
-     }
-
-    /* If on mobile, hide the mobile window fullscreen icon so it doesn't show up on the thumbnail page */
-     if (isMobile()) {
-       document.getElementById("hide-text-icon-mobile").style.display = "none";
      }
 
      // In thumbnail view, clicking on the cursor shouldn't do anything. Therefore, reset the title cursor to 'auto' 
