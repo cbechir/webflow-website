@@ -195,7 +195,10 @@
      
    var openPictureOverlay = function() {
      
-     document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0);
+
+     document.getElementById("navbar").style.display = "none";
+     
+     document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0); 
      
      var pictureCaption = getPictureCatpion(this);
      var pictureNumber = getPictureNumber(this);    
@@ -225,6 +228,9 @@
    };
 
    var closePictureOverlay = function() {
+
+     document.getElementById("navbar").style.display = "block";
+     
      document.getElementById("single-picture-overlay").style.display = "none";      
      document.getElementById("picture-caption").style.display = "none";
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
@@ -318,14 +324,12 @@
    }                                                     
 
    function handleTouchStart(evt) {
-       console.log("handleTouchStart called");
        const firstTouch = getTouches(evt)[0];                                      
        xDown = firstTouch.clientX;                                      
        yDown = firstTouch.clientY;                                      
    };                                                
 
    function handleTouchMove(evt) {
-       console.log("handleTouchMove called");
        if ( ! xDown || ! yDown ) {
            return;
        }
@@ -338,10 +342,8 @@
 
        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
            if ( xDiff > 0 ) {
-               console.log("left swipe"); 
                nextPicture();
            } else {
-               console.log("right swipe");
                previousPicture();
            }                       
        } else {
