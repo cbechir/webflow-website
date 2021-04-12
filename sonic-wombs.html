@@ -118,7 +118,7 @@
    }
    
    var showText = function () {
-      document.getElementById("caption-section").style.display = "block";
+      document.getElementById("caption-section").style.display = "flex";
       document.getElementById("picture-counter").style.display = "block";
 
       if (isMobile()) {
@@ -140,6 +140,7 @@
       }
       
       document.getElementById("fullscreen-navigation-icons").style.position = "static"; 
+      document.getElementById("fullscreen-navigation-icons").style.minWidth = "100px"; 
    }
 
    var enterBrowserFullscreen = function() {
