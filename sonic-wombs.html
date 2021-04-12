@@ -104,21 +104,20 @@
       
    var hideText = function () {
     
-      document.getElementById("caption-section").style.display = "none";
+      document.getElementById("picture-caption").style.display = "none";
       document.getElementById("picture-counter").style.display = "none";
 
   
       document.getElementById("show-text-icon").style.display = "block";
       document.getElementById("hide-text-icon").style.display = "none";
 
-      document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "0px"; 
       document.getElementById("fullscreen-navigation-icons").style.position = "absolute"; 
       document.getElementById("fullscreen-navigation-icons").style.top = "10px"; 
       document.getElementById("fullscreen-navigation-icons").style.right = "10px"; 
    }
    
    var showText = function () {
-      document.getElementById("caption-section").style.display = "flex";
+      document.getElementById("picture-caption").style.display = "block";
       document.getElementById("picture-counter").style.display = "block";
 
       if (isMobile()) {
