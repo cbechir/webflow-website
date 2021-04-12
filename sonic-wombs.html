@@ -110,13 +110,6 @@
   
       document.getElementById("show-text-icon").style.display = "block";
       document.getElementById("hide-text-icon").style.display = "none";
-
-      
-      if (isMobile()) {
-         document.getElementById("fullscreen-navigation-icons").style.position = "absolute"; 
-         document.getElementById("fullscreen-navigation-icons").style.top = "10px"; 
-         document.getElementById("fullscreen-navigation-icons").style.right = "10px"; 
-      }
    }
    
    var showText = function () {
@@ -126,12 +119,6 @@
 
       document.getElementById("show-text-icon").style.display = "none";
       document.getElementById("hide-text-icon").style.display = "block";
-
-      if (isMobile()) {
-        document.getElementById("fullscreen-navigation-icons").style.position = "static"; 
-        document.getElementById("fullscreen-navigation-icons").style.top = "0px"; 
-        document.getElementById("fullscreen-navigation-icons").style.right = "0px"; 
-      }
    }
 
    var enterBrowserFullscreen = function() {
