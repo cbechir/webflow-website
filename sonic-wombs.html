@@ -111,35 +111,27 @@
       document.getElementById("show-text-icon").style.display = "block";
       document.getElementById("hide-text-icon").style.display = "none";
 
-      document.getElementById("fullscreen-navigation-icons").style.position = "absolute"; 
-      document.getElementById("fullscreen-navigation-icons").style.top = "10px"; 
-      document.getElementById("fullscreen-navigation-icons").style.right = "10px"; 
+      
+      if (isMobile()) {
+         document.getElementById("fullscreen-navigation-icons").style.position = "absolute"; 
+         document.getElementById("fullscreen-navigation-icons").style.top = "10px"; 
+         document.getElementById("fullscreen-navigation-icons").style.right = "10px"; 
+      }
    }
    
    var showText = function () {
       document.getElementById("picture-caption").style.display = "block";
       document.getElementById("picture-counter").style.display = "block";
 
+
+      document.getElementById("show-text-icon").style.display = "none";
+      document.getElementById("hide-text-icon").style.display = "block";
+
       if (isMobile()) {
-        document.getElementById("show-text-icon").style.display = "none";
-        // On mobile, reset the single picture overlay top position to its default so the picture doesn't overlap with the caption
-        document.getElementById("single-picture-overlay").style.top = "-20px";
-
+        document.getElementById("fullscreen-navigation-icons").style.position = "static"; 
+        document.getElementById("fullscreen-navigation-icons").style.top = "0px"; 
+        document.getElementById("fullscreen-navigation-icons").style.right = "0px"; 
       }
-      else {
-        document.getElementById("show-text-icon").style.display = "none";
-      }
-      
-
-      /* Only show the desktop "enter fullscreen" icon if we're on desktop. That is because on Mobile
-      another icon is used, it's always displayed on mobile, and we don't want to show the desktop icon here,
-      else we end up with two icons, the mobile one and the desktop one. */
-      if (!isMobile()) {
-        document.getElementById("hide-text-icon").style.display = "block";
-      }
-      
-      document.getElementById("fullscreen-navigation-icons").style.position = "static"; 
-      document.getElementById("fullscreen-icons-and-picture-counter").style.minWidth = "100px"; 
    }
 
    var enterBrowserFullscreen = function() {
