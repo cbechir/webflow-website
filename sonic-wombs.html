@@ -108,8 +108,8 @@
       document.getElementById("picture-counter").style.display = "none";
 
   
-      document.getElementById("show-text-icon").style.display = "block";
-      document.getElementById("hide-text-icon").style.display = "none";
+      /* document.getElementById("show-text-icon").style.display = "block";
+      document.getElementById("hide-text-icon").style.display = "none"; */
    }
    
    var showText = function () {
@@ -117,8 +117,8 @@
       document.getElementById("picture-counter").style.display = "block";
 
 
-      document.getElementById("show-text-icon").style.display = "none";
-      document.getElementById("hide-text-icon").style.display = "block";
+      /* document.getElementById("show-text-icon").style.display = "none";
+      document.getElementById("hide-text-icon").style.display = "block"; */
    }
 
    var enterBrowserFullscreen = function() {
@@ -126,6 +126,8 @@
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "none";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "block";
+      document.getElementById("hide-text-icon").click();
+
     }
 
     var exitBrowserFullscreen = function() {
@@ -133,6 +135,7 @@
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
+      document.getElementById("show-text-icon").click();
 
       // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
       triggerMasonaryGridOrdering();
