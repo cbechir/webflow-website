@@ -1,0 +1,34 @@
+<script>
+   
+   /* Footer - Next Previous Playlists */
+   var Webflow = Webflow || [];
+   Webflow.push(function () { 
+    
+      var previous_href = $('#post_list .w--current').parent().next().find('a').attr('href');
+      var next_href = $('#post_list .w--current').parent().prev().find('a').attr('href');
+
+      var previous_mixtape_title = $('#post_list .w--current').parent().next().find('a #post_title').text();
+      var next_mixtape_title = $('#post_list .w--current').parent().prev().find('a #post_title').text();
+
+      //if last post in list
+      if(next_href == undefined) {
+        next_href = $('#post_list').children().children().first().find('a').attr('href');
+        $('#next_button').fadeOut(); //optional - remove if you want to loop to beginning
+      }
+
+      //if first post in list
+      if(previous_href == undefined) {
+        previous_href = $('#post_list').children().children().last().find('a').attr('href');
+        $('#previous_button').fadeOut();  //optional - remove if you want to loop to end
+      }
+
+      //apply data to next / previous buttons
+      $('#next_button').attr('href', next_href);
+      $('#previous_button').attr('href', previous_href);
+
+      $('#next_mixtape_title').text(next_mixtape_title);
+      $('#previous_mixtape_title').text(previous_mixtape_title);
+
+    });
+
+  </script>
