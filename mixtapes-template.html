@@ -1,4 +1,181 @@
 <script>
+
+      var enableNightMode = function () {
+      var backgroundColor = backgroundGray1;
+      var titleColor = contrast_gray_100;
+      var textHighlightColor = contrast_gray_300;
+      var textColor = contrast_gray_400;
+      var borderColor = borderNightModeColor;
+
+      enableNightModeGlobal();
+      
+      document.getElementsByClassName("mixtape-page-wrapper")[0].style.backgroundColor = backgroundColor;
+      
+      document.getElementsByClassName("mixtape-left-section-grid")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("mixtape-left-section-grid")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-image")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-grid-desktop")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-grid-desktop")[0].style.backgroundColor = backgroundColor;      
+      document.getElementsByClassName("mixtape-page-cover-grid-mobile")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-grid-mobile")[0].style.backgroundColor = backgroundColor;      
+      document.getElementsByClassName("type-of-post")[0].style.color = contrast_gray_500;
+      for (element of document.getElementsByClassName("genres")) {
+        element.style.color = textHighlightColor;
+      }
+      document.getElementsByClassName("mixtape-title")[0].style.color = titleColor; // desktop
+      document.getElementsByClassName("mixtape-title")[1].style.color = titleColor; // mobile
+      for (element of document.getElementsByClassName("mixtape-metadata")) {
+        element.style.color = textHighlightColor;
+      }
+      document.getElementsByClassName("musicians-featured")[0].style.color = textColor;
+      for (element of document.getElementsByClassName("quick-access-link")) {
+        element.classList.add("dark-theme");
+      }
+      document.getElementsByClassName("spacebar-message")[0].style.color = contrast_gray_600;
+      
+     
+      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundSize = "0 0";
+      document.getElementsByClassName("mixtape-metadata-intro-text")[0].style.color = textHighlightColor;      
+
+      document.getElementsByClassName("personal-update-text")[0].classList.add("dark-theme");
+      document.getElementsByClassName("mixtape-personal-update-title")[0].style.color = textHighlightColor;
+      
+      document.getElementsByClassName("mixtape-transition-2")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("mixtape-transition-text-2")[0].style.color = textHighlightColor;
+      
+      for (const section of document.getElementsByClassName("section")) {
+        section.style.borderColor = borderColor;
+      }
+      
+       for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
+        squareWrapper.style.borderColor = borderColor;
+      }
+      for (const element of document.getElementsByClassName("song-title")) {
+        element.style.color = textHighlightColor;
+      }
+      for (const element of document.getElementsByClassName("streaming-service-logo")) {
+        element.classList.add("dark-theme");
+      }
+      
+      document.getElementsByClassName("listen-message")[0].style.color = titleColor;
+
+      for (const textField of document.getElementsByClassName("text-field")) {
+        textField.style.borderColor = borderColor;
+      }
+      
+      for (const button of document.getElementsByClassName("streaming-service-button")) {
+         button.classList.add("dark-theme");
+      } 
+      
+      document.getElementsByClassName("streaming-services-section")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("streaming-services-section")[0].style.backgroundSize = "0 0";
+  
+      document.getElementsByClassName("newsletter-sign-up-section")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("newsletter-intro-text")[0].style.color = textColor;
+      document.getElementsByClassName("subscribe-button")[0].classList.add("dark-theme");
+      document.getElementById("footer-success-message").style.color = textColor;
+      document.getElementById("footer-success-message").style.backgroundColor = backgroundColor;
+      document.getElementById("footer-error-message").style.backgroundColor = backgroundColor;      
+      
+      document.getElementsByClassName("bottom-nav-section")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("bottom-nav-section")[0].style.borderColor = borderColor;
+   }
+   
+   var disableNightMode = function() {
+      var backgroundColor = white;
+      var titleColor = black;
+      var textHighlightColor = black;
+      var textColor = black;
+      var borderColor = black;
+
+      disableNightModeGlobal(); /* defined in global custom code */
+      
+      document.getElementsByClassName("mixtape-page-wrapper")[0].style.backgroundColor = whiteSmoke;
+      
+      document.getElementsByClassName("mixtape-left-section-grid")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("mixtape-left-section-grid")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-image")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-grid-desktop")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-page-cover-grid-desktop")[0].style.backgroundColor = backgroundColor;      
+      document.getElementsByClassName("mixtape-page-cover-grid-mobile")[0].style.borderColor = borderColor;    
+      document.getElementsByClassName("mixtape-page-cover-grid-mobile")[0].style.backgroundColor = backgroundColor;      
+      document.getElementsByClassName("type-of-post")[0].style.color = textColor;
+      for (element of document.getElementsByClassName("genres")) {
+        element.style.color = textHighlightColor;
+      }
+      document.getElementsByClassName("mixtape-title")[0].style.color = titleColor; // desktop
+      document.getElementsByClassName("mixtape-title")[1].style.color = titleColor; // mobile
+      for (element of document.getElementsByClassName("mixtape-metadata")) {
+        element.style.color = textHighlightColor;
+      }
+      document.getElementsByClassName("musicians-featured")[0].style.color = textColor;
+      for (element of document.getElementsByClassName("quick-access-link")) {
+        element.classList.remove("dark-theme");
+      }
+      
+      document.getElementsByClassName("spacebar-message")[0].style.color = textColor;
+      
+      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundSize = "auto";
+      document.getElementsByClassName("mixtape-metadata-intro-text")[0].style.color = textHighlightColor;      
+      
+      document.getElementsByClassName("personal-update-text")[0].classList.remove("dark-theme");
+      document.getElementsByClassName("mixtape-personal-update-title")[0].style.color = textHighlightColor;
+      
+      document.getElementsByClassName("mixtape-transition-2")[0].style.backgroundColor = black;
+      document.getElementsByClassName("mixtape-transition-text-2")[0].style.color = whiteSmoke;
+      
+      for (const section of document.getElementsByClassName("section")) {
+        section.style.borderColor = borderColor;
+      }
+      
+      for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
+        squareWrapper.style.borderColor = borderColor;
+      }
+      for (const element of document.getElementsByClassName("song-title")) {
+        element.style.color = textHighlightColor;
+      }
+      for (const element of document.getElementsByClassName("streaming-service-logo")) {
+        element.classList.remove("dark-theme");
+      }
+      
+      document.getElementsByClassName("listen-message")[0].style.color = titleColor;
+      
+      for (const textField of document.getElementsByClassName("text-field")) {
+       textField.style.borderColor = borderColor;
+     }
+     
+     for (const button of document.getElementsByClassName("streaming-service-button")) {
+        button.classList.remove("dark-theme");
+     }
+     
+     document.getElementsByClassName("streaming-services-section")[0].style.backgroundColor = backgroundColor;
+     document.getElementsByClassName("streaming-services-section")[0].style.backgroundSize = "auto";
+
+     document.getElementsByClassName("newsletter-sign-up-section")[0].style.borderColor = borderColor;
+     document.getElementsByClassName("newsletter-intro-text")[0].style.color = textColor; 
+     document.getElementsByClassName("subscribe-button")[0].classList.remove("dark-theme");
+     document.getElementById("footer-success-message").style.color = textColor;
+     document.getElementById("footer-success-message").style.backgroundColor = backgroundColor;
+     document.getElementById("footer-error-message").style.backgroundColor = backgroundColor;
+
+     
+     document.getElementsByClassName("bottom-nav-section")[0].style.backgroundColor = backgroundColor;
+     document.getElementsByClassName("bottom-nav-section")[0].style.borderColor = borderColor;
+   }
+   
+   const currentTheme = localStorage.getItem("theme");
+   if (localStorage.getItem("theme") === "dark") {
+      enableNightMode();
+   } else {
+      disableNightMode();
+   }
+   
+   nightModeIcon.addEventListener('click', enableNightMode, false);
+   nightModeIconMobile.addEventListener('click', enableNightMode, false);
+   lightModeIcon.addEventListener('click', disableNightMode, false);
+   lightModeIconMobile.addEventListener('click', disableNightMode, false);
    
    /* Footer - Next Previous Playlists */
    var Webflow = Webflow || [];
