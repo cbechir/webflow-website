@@ -73,6 +73,7 @@
       var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
       if (!isLeftEdgeReached(pictureNumber)) {
         leftChevronCursor.style.display = "block";
+        galleryLowerLeftSection.style.cursor = "none";
       }
    });
    galleryLowerLeftSection.addEventListener('mouseleave', e => {
@@ -88,6 +89,7 @@
       var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
       if (!isRightEdgeReached(pictureNumber)) {
         rightChevronCursor.style.display = "block";
+        galleryLowerRightSection.style.cursor = "none";
       }
    });
    galleryLowerRightSection.addEventListener('mouseleave', e => {
@@ -232,7 +234,7 @@
      document.getElementById("single-picture-overlay").style.display = "flex";      
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
   
-     //updateCursors(pictureNumber);
+     updateCursors(pictureNumber);
 
      
    };
@@ -270,7 +272,7 @@
        document.getElementById("picture-caption").textContent = nextPictureCaption;
        document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
 
-       //updateCursors(nextPictureNumber);
+       updateCursors(nextPictureNumber);
      }
    };
    
@@ -293,7 +295,7 @@
        document.getElementById("picture-caption").textContent = previousPictureCaption;
        document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
 
-       //updateCursors(previousPictureNumber);
+       updateCursors(previousPictureNumber);
      }
    };
 
