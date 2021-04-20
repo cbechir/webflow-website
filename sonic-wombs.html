@@ -32,6 +32,10 @@
    var getPictureNumber = function(element) {
       return element.getElementsByClassName("hidden-picture-number")[0].textContent;
    }
+
+   var getPictureNumberFromCounter = function() {
+       document.getElementById("picture-counter").textContent.split("/")[0].trim();
+   }
    
    var getPictureImageUrl = function(element) {
       return element.getElementsByClassName("photo-series-image")[0].getAttribute("src"); 
@@ -70,7 +74,9 @@
       leftChevronCursor.style.left = e.clientX + 0 + "px";
    });
    galleryLowerLeftSection.addEventListener('mouseover', e => {
-      leftChevronCursor.style.display = "block";
+      if (!isLeftEdgeReached(getPictureNumberFromCounter())) {
+        leftChevronCursor.style.display = "block";
+      }
    });
    galleryLowerLeftSection.addEventListener('mouseleave', e => {
       leftChevronCursor.style.display = "none";
@@ -82,7 +88,9 @@
       rightChevronCursor.style.left = e.clientX - 35 + "px";
    });
    galleryLowerRightSection.addEventListener('mouseover', e => {
-      rightChevronCursor.style.display = "block";
+      if (!isRightEdgeReached(getPictureNumberFromCounter())) {
+        rightChevronCursor.style.display = "block";
+      }
    });
    galleryLowerRightSection.addEventListener('mouseleave', e => {
       rightChevronCursor.style.display = "none";
@@ -247,7 +255,7 @@
    var nextPicture = function() {
      
      /* Get current picture number */
-     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+     var currentPictureNumber = getPictureNumberFromCounter();
      
      if (currentPictureNumber != numberOfPictures) {
        /* Get data from next picture */
@@ -270,7 +278,7 @@
    var previousPicture = function() {
      
      /* Get current picture number */
-     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+     var currentPictureNumber =  getPictureNumberFromCounter();
      
      if (currentPictureNumber != 1) {
        /* Get data from previous picture */
