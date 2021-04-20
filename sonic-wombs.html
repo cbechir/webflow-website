@@ -256,7 +256,7 @@
    var nextPicture = function() {
      
      /* Get current picture number */
-     var currentPictureNumber = getPictureNumberFromCounter();
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      console.log("currentPictureNumber: " + currentPictureNumber);
      
      if (currentPictureNumber != numberOfPictures) {
