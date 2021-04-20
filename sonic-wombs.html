@@ -64,57 +64,61 @@
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var iconsSection = document.getElementById("icons-wrapper");
    
-   // Left Chevron Cursor
-   galleryLowerLeftSection.addEventListener('mousemove', e => {
-      leftChevronCursor.style.top = e.clientY - 15 + "px";
-      leftChevronCursor.style.left = e.clientX + 0 + "px";
-   });
-   galleryLowerLeftSection.addEventListener('mouseover', e => {
-      var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
-      if (!isLeftEdgeReached(pictureNumber)) {
-        leftChevronCursor.style.display = "block";
-        galleryLowerLeftSection.style.cursor = "none";
-      }
-   });
-   galleryLowerLeftSection.addEventListener('mouseleave', e => {
-      leftChevronCursor.style.display = "none";
-   });
 
-   // Right Chevron Cursor
-   galleryLowerRightSection.addEventListener('mousemove', e => {
-      rightChevronCursor.style.top = e.clientY - 23 + "px";
-      rightChevronCursor.style.left = e.clientX - 35 + "px";
-   });
-   galleryLowerRightSection.addEventListener('mouseover', e => {
-      var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
-      if (!isRightEdgeReached(pictureNumber)) {
-        rightChevronCursor.style.display = "block";
-        galleryLowerRightSection.style.cursor = "none";
-      }
-   });
-   galleryLowerRightSection.addEventListener('mouseleave', e => {
-      rightChevronCursor.style.display = "none";
-   });
+   if !isMobile() {
+     // Left Chevron Cursor
+     galleryLowerLeftSection.addEventListener('mousemove', e => {
+        leftChevronCursor.style.top = e.clientY - 15 + "px";
+        leftChevronCursor.style.left = e.clientX + 0 + "px";
+     });
+     galleryLowerLeftSection.addEventListener('mouseover', e => {
+        var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+        if (!isLeftEdgeReached(pictureNumber) && isMobile) {
+          leftChevronCursor.style.display = "block";
+          galleryLowerLeftSection.style.cursor = "none";
+        }
+     });
+     galleryLowerLeftSection.addEventListener('mouseleave', e => {
+        leftChevronCursor.style.display = "none";
+     });
 
-   // Up Chevron Cursor
-   galleryUpperSection.addEventListener('mousemove', e => {
-      upChevronCursor.style.top = e.clientY + 3 + "px";
-      upChevronCursor.style.left = e.clientX - 17 + "px";
-   })
-   galleryUpperSection.addEventListener('mouseover', e => {
-      upChevronCursor.style.display = "block";
-      galleryUpperSection.style.cursor = "none";
+     // Right Chevron Cursor
+     galleryLowerRightSection.addEventListener('mousemove', e => {
+        rightChevronCursor.style.top = e.clientY - 23 + "px";
+        rightChevronCursor.style.left = e.clientX - 35 + "px";
+     });
+     galleryLowerRightSection.addEventListener('mouseover', e => {
+        var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+        if (!isRightEdgeReached(pictureNumber)) {
+          rightChevronCursor.style.display = "block";
+          galleryLowerRightSection.style.cursor = "none";
+        }
+     });
+     galleryLowerRightSection.addEventListener('mouseleave', e => {
+        rightChevronCursor.style.display = "none";
+     });
 
-   })
-   galleryUpperSection.addEventListener('mouseleave', e => {
-      upChevronCursor.style.display = "none";
-   });
+     // Up Chevron Cursor
+     galleryUpperSection.addEventListener('mousemove', e => {
+        upChevronCursor.style.top = e.clientY + 3 + "px";
+        upChevronCursor.style.left = e.clientX - 17 + "px";
+     })
+     galleryUpperSection.addEventListener('mouseover', e => {
+        upChevronCursor.style.display = "block";
+        galleryUpperSection.style.cursor = "none";
+
+     })
+     galleryUpperSection.addEventListener('mouseleave', e => {
+        upChevronCursor.style.display = "none";
+     });
+     
+     iconsSection.addEventListener('mousemove', e => {
+        upChevronCursor.style.display = "none";
+        leftChevronCursor.style.display = "none";
+        rightChevronCursor.style.display = "none";
+     });
+   }
    
-   iconsSection.addEventListener('mousemove', e => {
-      upChevronCursor.style.display = "none";
-      leftChevronCursor.style.display = "none";
-      rightChevronCursor.style.display = "none";
-   });
    
    var updateCursors = function(pictureNumber) {
       if (isLeftEdgeReached(pictureNumber)) {
