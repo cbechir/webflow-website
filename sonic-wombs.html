@@ -64,29 +64,41 @@
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var iconsSection = document.getElementById("icons-wrapper");
    
+   // Left Chevron Cursor
    galleryLowerLeftSection.addEventListener('mousemove', e => {
-      leftChevronCursor.style.display = "block";
-      upChevronCursor.style.display = "none";
-      rightChevronCursor.style.display = "none";
       leftChevronCursor.style.top = e.clientY - 15 + "px";
       leftChevronCursor.style.left = e.clientX + 0 + "px";
    });
-   
-   galleryLowerRightSection.addEventListener('mousemove', e => {
-      rightChevronCursor.style.display = "block";
+   galleryLowerLeftSection.addEventListener('mouseover', e => {
+      leftChevronCursor.style.display = "block";
+   });
+   galleryLowerLeftSection.addEventListener('mouseleave', e => {
       leftChevronCursor.style.display = "none";
-      upChevronCursor.style.display = "none";
+   });
+
+   // Right Chevron Cursor
+   galleryLowerRightSection.addEventListener('mousemove', e => {
       rightChevronCursor.style.top = e.clientY - 23 + "px";
       rightChevronCursor.style.left = e.clientX - 35 + "px";
    });
-   
-   galleryUpperSection.addEventListener('mousemove', e => {
-      upChevronCursor.style.display = "block";
-      leftChevronCursor.style.display = "none";
+   galleryLowerRightSection.addEventListener('mouseover', e => {
+      rightChevronCursor.style.display = "block";
+   });
+   galleryLowerRightSection.addEventListener('mouseleave', e => {
       rightChevronCursor.style.display = "none";
+   });
+
+   // Up Chevron Cursor
+   galleryUpperSection.addEventListener('mousemove', e => {
       upChevronCursor.style.top = e.clientY + 3 + "px";
       upChevronCursor.style.left = e.clientX - 17 + "px";
    })
+   galleryUpperSection.addEventListener('mouseover', e => {
+      upChevronCursor.style.display = "block";
+   })
+   galleryUpperSection.addEventListener('mouseleave', e => {
+      upChevronCursor.style.display = "none";
+   });
    
    iconsSection.addEventListener('mousemove', e => {
       upChevronCursor.style.display = "none";
