@@ -52,19 +52,56 @@
    var isWindowFullscreenMode = function() {
      return document.getElementById('navbar').style.display === "none";
    }
+
+
+   /* Chevron Cursor */
+   var leftChevronCursor = document.getElementsByClassName("left-chevron-cursor")[0];
+   var rightChevronCursor = document.getElementsByClassName("right-chevron-cursor")[0];
+   var upChevronCursor = document.getElementsByClassName("up-chevron-cursor")[0];
+
+   var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section"); 
+   var galleryLowerRightSection = document.getElementById("gallery-lower-right-section"); 
+   var galleryUpperSection = document.getElementById("gallery-upper-section");
+   var iconsSection = document.getElementById("icons-wrapper");
+   
+   galleryLowerLeftSection.addEventListener('mousemove', e => {
+      leftChevronCursor.style.display = "block";
+      upChevronCursor.style.display = "none";
+      rightChevronCursor.style.display = "none";
+      leftChevronCursor.style.top = e.clientY - 15 + "px";
+      leftChevronCursor.style.left = e.clientX + 0 + "px";
+   });
+   
+   galleryLowerRightSection.addEventListener('mousemove', e => {
+      rightChevronCursor.style.display = "block";
+      leftChevronCursor.style.display = "none";
+      upChevronCursor.style.display = "none";
+      rightChevronCursor.style.top = e.clientY - 23 + "px";
+      rightChevronCursor.style.left = e.clientX - 35 + "px";
+   });
+   
+   galleryUpperSection.addEventListener('mousemove', e => {
+      upChevronCursor.style.display = "block";
+      leftChevronCursor.style.display = "none";
+      rightChevronCursor.style.display = "none";
+      upChevronCursor.style.top = e.clientY + 3 + "px";
+      upChevronCursor.style.left = e.clientX - 17 + "px";
+   })
+   
+   iconsSection.addEventListener('mousemove', e => {
+      upChevronCursor.style.display = "none";
+      leftChevronCursor.style.display = "none";
+      rightChevronCursor.style.display = "none";
+   });
    
    var updateCursors = function(pictureNumber) {
       if (isLeftEdgeReached(pictureNumber)) {
-         document.getElementById('gallery-lower-left-section').style.cursor = "auto";
-         document.getElementById('gallery-lower-right-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a69bb143b8f027d6831ff_chevron-right-icon-25px.png'), e-resize";
+         galleryLowerLeftSection.style.cursor = "auto";
+         leftChevronCursor.style.display = "none";
       }
       else if (isRightEdgeReached(pictureNumber)) {
-         document.getElementById('gallery-lower-right-section').style.cursor = "auto";
-         document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
-     }
-     else {
-        document.getElementById('gallery-lower-right-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a69bb143b8f027d6831ff_chevron-right-icon-25px.png'), e-resize";
-        document.getElementById('gallery-lower-left-section').style.cursor = "url('https://uploads-ssl.webflow.com/602e8d61b48fab24c169405e/605a6a4d596dd435ee6402f1_chevron-left-icon-25px.png'), w-resize"
+         galleryLowerRightSection.style.cursor = "auto";
+         rightChevronCursor.style.display = "none";
      }
    }
 
@@ -177,7 +214,7 @@
      document.getElementById("single-picture-overlay").style.display = "flex";      
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
   
-     //updateCursors(pictureNumber);
+     updateCursors(pictureNumber);
 
      
    };
@@ -214,7 +251,7 @@
        document.getElementById("picture-caption").textContent = nextPictureCaption;
        document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
 
-       //updateCursors(nextPictureNumber);
+       updateCursors(nextPictureNumber);
      }
    };
    
@@ -237,7 +274,7 @@
        document.getElementById("picture-caption").textContent = previousPictureCaption;
        document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
 
-       //updateCursors(previousPictureNumber);
+       updateCursors(previousPictureNumber);
      }
    };
 
