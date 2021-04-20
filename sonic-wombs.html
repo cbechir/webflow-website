@@ -25,7 +25,7 @@
     return check;
    };
 
-   var getPictureCatpion = function(element) {
+   var getPictureCaption = function(element) {
       return element.getElementsByClassName("hidden-picture-caption")[0].textContent; 
    };
    
@@ -222,7 +222,7 @@
      
      document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0); 
      
-     var pictureCaption = getPictureCatpion(this);
+     var pictureCaption = getPictureCaption(this);
      var pictureNumber = getPictureNumber(this);    
      var imageURL = getPictureImageUrl(this);
 		 var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
@@ -256,6 +256,7 @@
      
      /* Get current picture number */
      var currentPictureNumber = getPictureNumberFromCounter();
+     console.log("currentPictureNumber: " + currentPictureNumber);
      
      if (currentPictureNumber != numberOfPictures) {
        /* Get data from next picture */
@@ -263,7 +264,7 @@
        var nextPictureCollectionItemId = "picture-" + nextPictureNumber;
        var nextPictureCollectionItem = document.getElementById(nextPictureCollectionItemId);
 
-       var nextPictureCaption = getPictureCatpion(nextPictureCollectionItem);     
+       var nextPictureCaption = getPictureCaption(nextPictureCollectionItem);     
        var imageURL = getPictureImageUrl(nextPictureCollectionItem);
        var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
 
@@ -286,7 +287,7 @@
        var previousPictureCollectionItemId = "picture-" + previousPictureNumber;
        var previousPictureCollectionItem = document.getElementById(previousPictureCollectionItemId);
 
-       var previousPictureCaption = getPictureCatpion(previousPictureCollectionItem);     
+       var previousPictureCaption = getPictureCaption(previousPictureCollectionItem);     
        var imageURL = getPictureImageUrl(previousPictureCollectionItem);
        var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
 
