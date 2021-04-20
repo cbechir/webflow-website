@@ -32,11 +32,6 @@
    var getPictureNumber = function(element) {
       return element.getElementsByClassName("hidden-picture-number")[0].textContent;
    }
-
-   function getPictureNumberFromCounter() {
-       document.getElementById("picture-counter").textContent.split("/")[0].trim();
-       console.log("textContent: " + document.getElementById("picture-counter").textContent);
-   }
    
    var getPictureImageUrl = function(element) {
       return element.getElementsByClassName("photo-series-image")[0].getAttribute("src"); 
@@ -75,7 +70,8 @@
       leftChevronCursor.style.left = e.clientX + 0 + "px";
    });
    galleryLowerLeftSection.addEventListener('mouseover', e => {
-      if (!isLeftEdgeReached(getPictureNumberFromCounter())) {
+      var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+      if (!isLeftEdgeReached(pictureNumber())) {
         leftChevronCursor.style.display = "block";
       }
    });
@@ -89,7 +85,8 @@
       rightChevronCursor.style.left = e.clientX - 35 + "px";
    });
    galleryLowerRightSection.addEventListener('mouseover', e => {
-      if (!isRightEdgeReached(getPictureNumberFromCounter())) {
+      var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+      if (!isRightEdgeReached(pictureNumber())) {
         rightChevronCursor.style.display = "block";
       }
    });
@@ -256,7 +253,7 @@
    var nextPicture = function() {
      
      /* Get current picture number */
-     var currentPictureNumber = getPictureNumberFromCounter();
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      console.log("currentPictureNumber: " + currentPictureNumber);
      
      if (currentPictureNumber != numberOfPictures) {
@@ -280,7 +277,7 @@
    var previousPicture = function() {
      
      /* Get current picture number */
-     var currentPictureNumber =  getPictureNumberFromCounter();
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
      if (currentPictureNumber != 1) {
        /* Get data from previous picture */
