@@ -38,13 +38,12 @@
         section.style.borderColor = borderColor;
       }
       
-      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundColor = backgroundColor;
-      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundSize = "0 0";
-      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.borderColor = borderColor;
-      document.getElementsByClassName("mixtape-overview")[0].style.color = textHighlightColor;      
-
+      document.getElementsByClassName("personal-update-section")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("personal-update-section")[0].style.backgroundSize = "0 0";
+      document.getElementsByClassName("personal-update-section")[0].style.borderColor = borderColor;
       document.getElementsByClassName("personal-update-text")[0].classList.add("dark-theme");
       document.getElementsByClassName("mixtape-personal-update-title")[0].style.color = textHighlightColor;
+      document.getElementsByClassName("mixtape-overview")[0].style.color = textHighlightColor;      
       
       document.getElementsByClassName("mixtape-transition-2")[0].style.backgroundColor = backgroundColor;
       document.getElementsByClassName("mixtape-transition-text-2")[0].style.color = textHighlightColor;
@@ -53,8 +52,7 @@
       document.getElementsByClassName("chapter-1-extra-slide")[0].style.backgroundColor = backgroundColor; 
       document.getElementsByClassName("extra-slide-text")[0].style.color = textHighlightColor; 
       
-      
-       for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
+      for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
         squareWrapper.style.borderColor = borderColor;
       }
       for (const element of document.getElementsByClassName("song-title")) {
@@ -128,12 +126,11 @@
         section.style.borderColor = borderColor;
       }
 
-      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundColor = backgroundColor;
-      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.backgroundSize = "auto";
-      document.getElementsByClassName("mixtape-opening-statement-section")[0].style.borderColor = borderColor;
-      document.getElementsByClassName("mixtape-overview")[0].style.color = textHighlightColor;
-
+      document.getElementsByClassName("personal-update-section")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("personal-update-section")[0].style.backgroundSize = "auto";
+      document.getElementsByClassName("personal-update-section")[0].style.borderColor = borderColor;
       document.getElementsByClassName("personal-update-text")[0].classList.remove("dark-theme");
+      document.getElementsByClassName("mixtape-overview")[0].style.color = textHighlightColor;
       document.getElementsByClassName("mixtape-personal-update-title")[0].style.color = textHighlightColor;
       
       document.getElementsByClassName("mixtape-transition-2")[0].style.backgroundColor = black;
@@ -142,8 +139,6 @@
 
       document.getElementsByClassName("chapter-1-extra-slide")[0].style.backgroundColor = backgroundColor;
       document.getElementsByClassName("extra-slide-text")[0].style.color = textHighlightColor; 
-      
-      
       
       for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
         squareWrapper.style.borderColor = borderColor;
