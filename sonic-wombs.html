@@ -25,6 +25,12 @@
     return check;
    };
 
+   var isTouchDevice = functiond() {
+      return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+   }
+
    var getPictureCaption = function(element) {
       return element.getElementsByClassName("hidden-picture-caption")[0].textContent; 
    };
@@ -65,7 +71,7 @@
    var iconsSection = document.getElementById("icons-wrapper");
    
 
-   if (!isMobile()) {
+   if (!isTouchDevice()) {
      // Left Chevron Cursor
      galleryLowerLeftSection.addEventListener('mousemove', e => {
         leftChevronCursor.style.top = e.clientY - 15 + "px";
@@ -73,7 +79,7 @@
      });
      galleryLowerLeftSection.addEventListener('mouseover', e => {
         var pictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
-        if (!isLeftEdgeReached(pictureNumber) && isMobile) {
+        if (!isLeftEdgeReached(pictureNumber) && isTouchDevice) {
           leftChevronCursor.style.display = "block";
           galleryLowerLeftSection.style.cursor = "none";
         }
