@@ -234,7 +234,10 @@
    var openPictureOverlay = function() {
      
 
-     document.getElementById("navbar").style.display = "none";
+     /* remove if when the full website is lauched */
+     if (document.getElementById("navbar") != undefined) {
+        document.getElementById("navbar").style.display = "none";
+     }
      document.getElementsByTagName('body')[0].style.overflow = "hidden";
      
      document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0); 
@@ -258,8 +261,10 @@
 
    var closePictureOverlay = function() {
 
-     /* uncomment when the full website is lauched */
-     // document.getElementById("navbar").style.display = "block";
+     /* remove if when the full website is lauched */
+     if (document.getElementById("navbar") != undefined) {
+        document.getElementById("navbar").style.display = "block";
+     }
      document.getElementsByTagName('body')[0].style.overflow = "visible";
 
      document.getElementById("single-picture-overlay").style.display = "none";      
