@@ -131,7 +131,7 @@
          galleryLowerLeftSection.style.cursor = "auto";
          leftChevronCursor.style.display = "none";
       }
-      else if (isRightEdgeReached(pictureNumber)) {
+      if (isRightEdgeReached(pictureNumber)) {
          galleryLowerRightSection.style.cursor = "auto";
          rightChevronCursor.style.display = "none";
      }
@@ -207,7 +207,7 @@
 
       document.getElementById("enter-browser-fullscreen-icon").style.display = "block";
       document.getElementById("exit-browser-fullscreen-icon").style.display = "none";
-      document.getElementById("single-picture-container").style.height = "90%";
+      document.getElementById("single-picture-container").style.height = "85%";
       document.getElementById("fullscreen-icons").style.right= "20px";
       document.getElementById("show-text-icon").click();
 
