@@ -304,7 +304,7 @@
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
-     if (currentPictureNumber != numberOfPictures) {
+     if (currentPictureNumber != photoSeriesNumberOfPictures) {
        /* Get data from next picture */
        var nextPictureNumber = Number(currentPictureNumber) + 1
        var nextPictureCollectionItemId = "picture-" + nextPictureNumber;
