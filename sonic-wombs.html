@@ -275,7 +275,7 @@
  
      document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
      document.getElementById("picture-caption").textContent = pictureCaption;
-     document.getElementById("picture-counter").textContent = pictureNumber + " / " + numberOfPictures; 
+     document.getElementById("picture-counter").textContent = pictureNumber + " / " + photoSeriesNumberOfPictures; 
 
      document.getElementById("single-picture-overlay").style.display = "flex";      
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
@@ -299,7 +299,7 @@
      triggerMasonaryGridOrdering();
    }
    
-   var nextPicture = function(numberOfPictures) {
+   var nextPicture = function() {
      
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
@@ -316,13 +316,13 @@
 
        document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
        document.getElementById("picture-caption").textContent = nextPictureCaption;
-       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
+       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + photoSeriesNumberOfPictures;
 
        updateCursors(nextPictureNumber);
      }
    };
    
-   var previousPicture = function(numberOfPictures) {
+   var previousPicture = function() {
      
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
@@ -339,7 +339,7 @@
 
        document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
        document.getElementById("picture-caption").textContent = previousPictureCaption;
-       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
+       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + photoSeriesNumberOfPictures;
 
        updateCursors(previousPictureNumber);
      }
