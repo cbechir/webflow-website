@@ -406,8 +406,8 @@
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
    var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
-   galleryLowerLeftSection.addEventListener('click', previousPicture(photoSeriesNumberOfPictures), false);
-   galleryLowerRightSection.addEventListener('click', nextPicture(photoSeriesNumberOfPictures), false);
+   galleryLowerLeftSection.addEventListener('click', previousPicture, false);
+   galleryLowerRightSection.addEventListener('click', nextPicture, false);
    galleryUpperSection.addEventListener('click', closePictureOverlay, false);
 
    
