@@ -11,8 +11,8 @@
       });
    });
 
-   var thumbnails = document.getElementsByClassName("photo-series-picture-data");
-   var numberOfPictures = thumbnails.length; 
+   var photoSeriesThumbnails = document.getElementsByClassName("photo-series-picture-data");
+   var photoSeriesNumberOfPictures = photoSeriesThumbnails.length; 
 
 
    /* Section purpose: helper functions */
@@ -52,7 +52,7 @@
    }
    
    var isRightEdgeReached = function(pictureNumber) {
-     return pictureNumber == numberOfPictures; 
+     return pictureNumber == photoSeriesNumberOfPictures; 
    }
 
    var isWindowFullscreenMode = function() {
@@ -259,7 +259,7 @@
 
    /* Section purpose: main functions for lightbox actions */
      
-   var openPictureOverlay = function() {
+   var openPictureOverlay = function(numberOfPictures) {
      
 
      /* remove if when the full website is lauched */
@@ -273,7 +273,7 @@
      var pictureCaption = getPictureCaption(this);
      var pictureNumber = getPictureNumber(this);    
      var imageURL = getPictureImageUrl(this);
-		 var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+	  var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
  
      document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
      document.getElementById("picture-caption").textContent = pictureCaption;
@@ -306,7 +306,7 @@
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
-     if (currentPictureNumber != numberOfPictures) {
+     if (currentPictureNumber != photoSeriesNumberOfPictures) {
        /* Get data from next picture */
        var nextPictureNumber = Number(currentPictureNumber) + 1
        var nextPictureCollectionItemId = "picture-" + nextPictureNumber;
@@ -318,7 +318,7 @@
 
        document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
        document.getElementById("picture-caption").textContent = nextPictureCaption;
-       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
+       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + photoSeriesNumberOfPictures;
 
        updateCursors(nextPictureNumber);
      }
@@ -341,7 +341,7 @@
 
        document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
        document.getElementById("picture-caption").textContent = previousPictureCaption;
-       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
+       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + photoSeriesNumberOfPictures;
 
        updateCursors(previousPictureNumber);
      }
@@ -401,8 +401,8 @@
 
    /* Section purpose: set up listeners for lightbox actions */
  
-   for (var i = 0; i < thumbnails.length; i++) {
-     thumbnails[i].addEventListener('click', openPictureOverlay, false);
+   for (var i = 0; i < photoSeriesThumbnails.length; i++) {
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay(photoSeriesNumberOfPictures), false);
    }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
