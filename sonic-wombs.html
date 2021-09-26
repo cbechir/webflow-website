@@ -259,8 +259,11 @@
 
    /* Section purpose: main functions for lightbox actions */
      
-   var openPictureOverlay = function(numberOfPictures) {
+   var openPictureOverlay = function(pictureNumber, numberOfPictures) {
      
+     var currentPictureCollectionItemId = "picture-" + pictureNumber;
+     var currentPictureCollectionItem = document.getElementById(currentPictureCollectionItemId);
+
 
      /* remove if when the full website is lauched */
      if (document.getElementById("navbar") != undefined) {
@@ -270,9 +273,9 @@
      
      document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0); 
      
-     var pictureCaption = getPictureCaption(this);
-     var pictureNumber = getPictureNumber(this);    
-     var imageURL = getPictureImageUrl(this);
+     var pictureCaption = getPictureCaption(currentPictureCollectionItem);
+     var pictureNumber = getPictureNumber(currentPictureCollectionItem);    
+     var imageURL = getPictureImageUrl(currentPictureCollectionItem);
 	  var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
  
      document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
@@ -301,12 +304,12 @@
      triggerMasonaryGridOrdering();
    }
    
-   var nextPicture = function() {
+   var nextPicture = function(numberOfPictures) {
      
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
-     if (currentPictureNumber != photoSeriesNumberOfPictures) {
+     if (currentPictureNumber != numberOfPictures) {
        /* Get data from next picture */
        var nextPictureNumber = Number(currentPictureNumber) + 1
        var nextPictureCollectionItemId = "picture-" + nextPictureNumber;
@@ -318,13 +321,13 @@
 
        document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
        document.getElementById("picture-caption").textContent = nextPictureCaption;
-       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + photoSeriesNumberOfPictures;
+       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
 
        updateCursors(nextPictureNumber);
      }
    };
    
-   var previousPicture = function() {
+   var previousPicture = function(numberOfPictures) {
      
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
@@ -341,7 +344,7 @@
 
        document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
        document.getElementById("picture-caption").textContent = previousPictureCaption;
-       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + photoSeriesNumberOfPictures;
+       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
 
        updateCursors(previousPictureNumber);
      }
@@ -408,8 +411,8 @@
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
    var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
-   galleryLowerLeftSection.addEventListener('click', previousPicture, false);
-   galleryLowerRightSection.addEventListener('click', nextPicture, false);
+   galleryLowerLeftSection.addEventListener('click', previousPicture(photoSeriesNumberOfPictures), false);
+   galleryLowerRightSection.addEventListener('click', nextPicture(photoSeriesNumberOfPictures), false);
    galleryUpperSection.addEventListener('click', closePictureOverlay, false);
 
    
