@@ -261,6 +261,8 @@
      
    var openPictureOverlay = function(pictureNumber, numberOfPictures) {
      
+     console.log("pictureNumber: " + pictureNumber)
+     console.log("numberOfPictures: " + numberOfPictures)
      var currentPictureCollectionItemId = "picture-" + pictureNumber;
      var currentPictureCollectionItem = document.getElementById(currentPictureCollectionItemId);
 
@@ -405,8 +407,10 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay(i, photoSeriesNumberOfPictures), false);
-   }
+     photoSeriesThumbnails[i].addEventListener('click', function(){
+         openPictureOverlay(i+1, photoSeriesNumberOfPictures)
+      }, false
+   );
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
