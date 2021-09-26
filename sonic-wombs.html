@@ -337,7 +337,7 @@
    };                                                
 
    function handleTouchMove(evt) {
-       if ( ! xDown || ! yDown ) {
+       if ( ! xDown || ! yDown || evt.touches.length !== 1) {
            return;
        }
 
