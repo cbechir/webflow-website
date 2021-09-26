@@ -259,15 +259,8 @@
 
    /* Section purpose: main functions for lightbox actions */
      
-   var openPictureOverlay = function(pictureNumber, numberOfPictures) {
-     
-     console.log("pictureNumber: " + pictureNumber)
-     console.log("numberOfPictures: " + numberOfPictures)
-     var currentPictureCollectionItemId = "picture-" + pictureNumber;
-     var currentPictureCollectionItem = document.getElementById(currentPictureCollectionItemId);
+   var openPictureOverlay = function() {
 
-
-     /* remove if when the full website is lauched */
      if (document.getElementById("navbar") != undefined) {
         document.getElementById("navbar").style.display = "none";
      }
@@ -275,9 +268,9 @@
      
      document.getElementById("photo-series-gallery-wrapper").scrollTo(0,0); 
      
-     var pictureCaption = getPictureCaption(currentPictureCollectionItem);
-     var pictureNumber = getPictureNumber(currentPictureCollectionItem);    
-     var imageURL = getPictureImageUrl(currentPictureCollectionItem);
+     var pictureCaption = getPictureCaption(this);
+     var pictureNumber = getPictureNumber(this);    
+     var imageURL = getPictureImageUrl(this);
 	  var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
  
      document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
@@ -407,10 +400,8 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', function(){
-         openPictureOverlay(i, photoSeriesNumberOfPictures)
-      }, false
-   )};
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
