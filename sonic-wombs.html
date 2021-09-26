@@ -137,6 +137,12 @@
      }
    }
 
+   var triggerMasonaryGridOrdering = function () {
+      triggerGradualReleaseMasonaryGridOrdering();
+      triggerPhotoSeriesMasonaryGridOrdering();
+      triggerBerlin2021ExhibitMasonaryGridOrdering();
+   }
+
     var triggerGradualReleaseMasonaryGridOrdering = function () {
         var gridItem = document.querySelector('.gradual-release-pictures-data');
         imagesLoaded(gridItem, function( instance ) {
