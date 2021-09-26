@@ -405,7 +405,7 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay(photoSeriesNumberOfPictures), false);
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay(i, photoSeriesNumberOfPictures), false);
    }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
