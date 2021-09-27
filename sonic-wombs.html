@@ -420,15 +420,15 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay("picture"), false);
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay.bind(this, "picture"), false);
    }
    
    for (var i = 0; i < gradualReleaseThumbnails.length; i++) {
-     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay("gradual-release"), false);
+     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay.bind(this, "gradual-release"), false);
    }
    
    for (var i = 0; i < berlin2021ExhibitThumbnails.length; i++) {
-     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay("berlin-2021-exhibit"), false);
+     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay.bind(this, "berlin-2021-exhibit"), false);
    }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
