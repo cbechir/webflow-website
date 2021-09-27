@@ -43,7 +43,7 @@
         (navigator.msMaxTouchPoints > 0));
    }
 
-   var getPictureCaption = function(element) {
+   function getPictureCaption(element) {
       return element.getElementsByClassName("hidden-picture-caption")[0].textContent; 
    };
    
@@ -277,7 +277,7 @@
 
    /* Section purpose: main functions for lightbox actions */
      
-   var openPictureOverlay = function(elementIdPrefix) {
+   var openPictureOverlay = function(self, elementIdPrefix) {
 
    console.log("elementIdPrefix is: " + elementIdPrefix);
 
