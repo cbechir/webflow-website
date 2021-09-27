@@ -24,7 +24,8 @@
    var berlin2021ExhibitThumbnails = document.getElementsByClassName("berlin-2021-exhibit-picture-data");
    var berlin2021ExhibitNumberOfPictures = berlin2021ExhibitThumbnails.length; 
 
-
+   var idPrefix;
+   var numberOfPictures;
 
 
    /* Section purpose: helper functions */
@@ -292,11 +293,11 @@
      triggerMasonaryGridOrdering();
    }
    
-   var nextPicture = function(idPrefix, numberOfPictures) {
+   var nextPicture = function() {
      console.log("nextPicture call registered");
      console.log("idPrefix: " + idPrefix);
      console.log("numberOfPictures: " + numberOfPictures);
-     
+
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
@@ -318,8 +319,11 @@
      }
    };
    
-   var previousPicture = function(idPrefix, numberOfPictures) {
-     
+   var previousPicture = function() {
+     console.log("previousPicture call registered");
+     console.log("idPrefix: " + idPrefix);
+     console.log("numberOfPictures: " + numberOfPictures);
+
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
@@ -374,11 +378,6 @@
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
   
      updateCursors(pictureNumber);
-
-     document.getElementById("gallery-upper-section").addEventListener('click', closePictureOverlay, false);
-     document.getElementById("single-picture-overlay-close-icon").addEventListener('click', closePictureOverlay, false);
-     document.getElementById("gallery-lower-right-section").addEventListener('click', nextPicture(idPrefix, numberOfPictures), false);
-     document.getElementById("gallery-lower-left-section").addEventListener('click', previousPicture(idPrefix, numberOfPictures), false);     
    };
 
 
@@ -411,9 +410,9 @@
 
        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
            if ( xDiff > 0 ) {
-               //nextPicture();
+               nextPicture();
            } else {
-               //previousPicture();
+               previousPicture();
            }                       
        } else {
            if ( yDiff > 0 ) {
@@ -446,6 +445,11 @@
    for (var i = 0; i < berlin2021ExhibitThumbnails.length; i++) {
      berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
+
+   document.getElementById("gallery-upper-section").addEventListener('click', closePictureOverlay, false);
+   document.getElementById("single-picture-overlay-close-icon").addEventListener('click', closePictureOverlay, false);
+   document.getElementById("gallery-lower-right-section").addEventListener('click', nextPicture, false);
+   document.getElementById("gallery-lower-left-section").addEventListener('click', previousPicture, false);     
    
    /*var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
