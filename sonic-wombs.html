@@ -6,13 +6,25 @@
 
    /* Section purpose: give an ID to each picture collection item */
    $(document).ready(function(){
-      $('.w-dyn-item').each(function() {
+      $('.photo-series-picture-data').each(function() {
          $(this).attr('id', 'picture-'+ $(this).children('.hidden-picture-number').text().trim());
+      });
+      $('.gradual-release-picture-data').each(function() {
+         $(this).attr('id', 'gradual-release-picture-'+ $(this).children('.hidden-picture-number').text().trim());
+      });
+      $('.berlin-2021-exhibit-picture-data').each(function() {
+         $(this).attr('id', 'berlin-2021-exhibit-picture-'+ $(this).children('.hidden-picture-number').text().trim());
       });
    });
 
    var photoSeriesThumbnails = document.getElementsByClassName("photo-series-picture-data");
    var photoSeriesNumberOfPictures = photoSeriesThumbnails.length; 
+   var gradualReleaseThumbnails = document.getElementsByClassName("gradual-release-picture-data");
+   var gradualReleaseNumberOfPictures = gradualReleaseThumbnails.length; 
+   var berlin2021ExhibitThumbnails = document.getElementsByClassName("berlin-2021-exhibit-picture-data");
+   var berlin2021ExhibitNumberOfPictures = berlin2021ExhibitThumbnails.length; 
+
+
 
 
    /* Section purpose: helper functions */
@@ -407,6 +419,14 @@
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
      photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
+   
+   for (var i = 0; i < gradualReleaseThumbnails.length; i++) {
+     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
+   
+   for (var i = 0; i < berlin2021ExhibitThumbnails.length; i++) {
+     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
