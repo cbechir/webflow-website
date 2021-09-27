@@ -10,10 +10,10 @@
          $(this).attr('id', 'picture-'+ $(this).children('.hidden-picture-number').text().trim());
       });
       $('.gradual-release-picture-data').each(function() {
-         $(this).attr('id', 'gradual-release-picture-'+ $(this).children('.hidden-picture-number').text().trim());
+         $(this).attr('id', 'gradualrelease-'+ $(this).children('.hidden-picture-number').text().trim());
       });
       $('.berlin-2021-exhibit-picture-data').each(function() {
-         $(this).attr('id', 'berlin-2021-exhibit-picture-'+ $(this).children('.hidden-picture-number').text().trim());
+         $(this).attr('id', 'berlin2021exhibit-'+ $(this).children('.hidden-picture-number').text().trim());
       });
    });
 
@@ -277,6 +277,67 @@
 
    /* Section purpose: main functions for lightbox actions */
      
+
+   var closePictureOverlay = function() {
+
+     if (document.getElementById("navbar") != undefined) {
+        //document.getElementById("navbar").style.display = "block";
+     }
+     document.getElementsByTagName('body')[0].style.overflow = "visible";
+
+     document.getElementById("single-picture-overlay").style.display = "none";      
+     document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
+     
+     // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
+     triggerMasonaryGridOrdering();
+   }
+   
+   var nextPicture = function(idPrefix, numberOfPictures) {
+     
+     /* Get current picture number */
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+     
+     if (currentPictureNumber != numberOfPictures) {
+       /* Get data from next picture */
+       var nextPictureNumber = Number(currentPictureNumber) + 1
+       var nextPictureCollectionItemId = idPrefix + "-" + nextPictureNumber;
+       var nextPictureCollectionItem = document.getElementById(nextPictureCollectionItemId);
+
+       var nextPictureCaption = getPictureCaption(nextPictureCollectionItem);     
+       var imageURL = getPictureImageUrl(nextPictureCollectionItem);
+       var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+
+       document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
+       document.getElementById("picture-caption").textContent = nextPictureCaption;
+       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + numberOfPictures;
+
+       updateCursors(nextPictureNumber);
+     }
+   };
+   
+   var previousPicture = function(idPrefix, numberOfPictures) {
+     
+     /* Get current picture number */
+     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
+     
+     if (currentPictureNumber != 1) {
+       /* Get data from previous picture */
+       var previousPictureNumber = Number(currentPictureNumber) - 1
+       var previousPictureCollectionItemId = idPrefix + "-" +  previousPictureNumber;
+       var previousPictureCollectionItem = document.getElementById(previousPictureCollectionItemId);
+
+       var previousPictureCaption = getPictureCaption(previousPictureCollectionItem);     
+       var imageURL = getPictureImageUrl(previousPictureCollectionItem);
+       var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+
+       document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
+       document.getElementById("picture-caption").textContent = previousPictureCaption;
+       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + numberOfPictures;
+
+       updateCursors(previousPictureNumber);
+     }
+   };
+
    var openPictureOverlay = function() {
 
      console.log(this);
@@ -304,78 +365,21 @@
      var pictureCaption = getPictureCaption(this);
      var pictureNumber = getPictureNumber(this);    
      var imageURL = getPictureImageUrl(this);
-	  var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
+     var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
  
      document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
      document.getElementById("picture-caption").textContent = pictureCaption;
-     document.getElementById("picture-counter").textContent = pictureNumber + " / " + photoSeriesNumberOfPictures; 
+     document.getElementById("picture-counter").textContent = pictureNumber + " / " + numberOfPictures; 
 
      document.getElementById("single-picture-overlay").style.display = "flex";      
      document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
   
      updateCursors(pictureNumber);
 
-     
-   };
-
-   var closePictureOverlay = function() {
-
-     if (document.getElementById("navbar") != undefined) {
-        //document.getElementById("navbar").style.display = "block";
-     }
-     document.getElementsByTagName('body')[0].style.overflow = "visible";
-
-     document.getElementById("single-picture-overlay").style.display = "none";      
-     document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
-     
-     // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
-     triggerMasonaryGridOrdering();
-   }
-   
-   var nextPicture = function() {
-     
-     /* Get current picture number */
-     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
-     
-     if (currentPictureNumber != photoSeriesNumberOfPictures) {
-       /* Get data from next picture */
-       var nextPictureNumber = Number(currentPictureNumber) + 1
-       var nextPictureCollectionItemId = "picture-" + nextPictureNumber;
-       var nextPictureCollectionItem = document.getElementById(nextPictureCollectionItemId);
-
-       var nextPictureCaption = getPictureCaption(nextPictureCollectionItem);     
-       var imageURL = getPictureImageUrl(nextPictureCollectionItem);
-       var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
-
-       document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
-       document.getElementById("picture-caption").textContent = nextPictureCaption;
-       document.getElementById("picture-counter").textContent = nextPictureNumber + " / " + photoSeriesNumberOfPictures;
-
-       updateCursors(nextPictureNumber);
-     }
-   };
-   
-   var previousPicture = function() {
-     
-     /* Get current picture number */
-     var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
-     
-     if (currentPictureNumber != 1) {
-       /* Get data from previous picture */
-       var previousPictureNumber = Number(currentPictureNumber) - 1
-       var previousPictureCollectionItemId = "picture-" + previousPictureNumber;
-       var previousPictureCollectionItem = document.getElementById(previousPictureCollectionItemId);
-
-       var previousPictureCaption = getPictureCaption(previousPictureCollectionItem);     
-       var imageURL = getPictureImageUrl(previousPictureCollectionItem);
-       var imageURLWithURLTerm = wrapAroundUrlTerm(imageURL)
-
-       document.getElementById("single-picture-container").style.backgroundImage = imageURLWithURLTerm;     
-       document.getElementById("picture-caption").textContent = previousPictureCaption;
-       document.getElementById("picture-counter").textContent = previousPictureNumber + " / " + photoSeriesNumberOfPictures;
-
-       updateCursors(previousPictureNumber);
-     }
+     document.getElementById("gallery-upper-section").addEventListener('click', closePictureOverlay, false);
+     document.getElementById("single-picture-overlay-close-icon").addEventListener('click', closePictureOverlay, false);
+     document.getElementById("gallery-lower-right-section").addEventListener('click', nextPicture(idPrefix, numberOfPictures), false);
+     document.getElementById("gallery-lower-left-section").addEventListener('click', previousPicture(idPrefix, numberOfPictures), false);     
    };
 
 
@@ -408,9 +412,9 @@
 
        if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
            if ( xDiff > 0 ) {
-               nextPicture();
+               //nextPicture();
            } else {
-               previousPicture();
+               //previousPicture();
            }                       
        } else {
            if ( yDiff > 0 ) {
@@ -444,7 +448,7 @@
      berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
    
-   var galleryUpperSection = document.getElementById("gallery-upper-section");
+   /*var galleryUpperSection = document.getElementById("gallery-upper-section");
    var galleryLowerRightSection = document.getElementById("gallery-lower-right-section");
    var galleryLowerLeftSection = document.getElementById("gallery-lower-left-section");
    galleryLowerLeftSection.addEventListener('click', previousPicture, false);
@@ -453,7 +457,7 @@
 
    
    var pictureOverlayCloseIcon = document.getElementById("single-picture-overlay-close-icon");
-   pictureOverlayCloseIcon.addEventListener('click', closePictureOverlay, false);
+   pictureOverlayCloseIcon.addEventListener('click', closePictureOverlay, false);*/
    
 
    $(document).on('keyup', function(event) {
