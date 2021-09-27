@@ -43,7 +43,7 @@
         (navigator.msMaxTouchPoints > 0));
    }
 
-   function getPictureCaption(element) {
+   var getPictureCaption = function(element) {
       return element.getElementsByClassName("hidden-picture-caption")[0].textContent; 
    };
    
@@ -277,9 +277,8 @@
 
    /* Section purpose: main functions for lightbox actions */
      
-   var openPictureOverlay = function(elementIdPrefix) {
+   var openPictureOverlay = function() {
 
-   console.log("elementIdPrefix is: " + elementIdPrefix);
    console.log(this);
 
      if (document.getElementById("navbar") != undefined) {
@@ -421,15 +420,15 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay("picture"));
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay, false;
    }
    
    for (var i = 0; i < gradualReleaseThumbnails.length; i++) {
-     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay.bind(this, "gradual-release"), false);
+     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
    
    for (var i = 0; i < berlin2021ExhibitThumbnails.length; i++) {
-     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay.bind(this, "berlin-2021-exhibit"), false);
+     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
