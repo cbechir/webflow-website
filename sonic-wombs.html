@@ -421,7 +421,7 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay.bind(this, "picture"), false);
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay("picture"));
    }
    
    for (var i = 0; i < gradualReleaseThumbnails.length; i++) {
