@@ -293,7 +293,7 @@
    }
    
    var nextPicture = function(idPrefix, numberOfPictures) {
-     
+     console.log("nextPicture call registered");
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
@@ -339,10 +339,6 @@
    };
 
    var openPictureOverlay = function() {
-
-     console.log(this);
-     console.log(this.id.split("-")[0]);
-
      idPrefix = this.id.split("-")[0]
 
      if (idPrefix === "picture") {
