@@ -294,6 +294,9 @@
    
    var nextPicture = function(idPrefix, numberOfPictures) {
      console.log("nextPicture call registered");
+     console.log("idPrefix: " + idPrefix);
+     console.log("numberOfPictures: " + numberOfPictures);
+     
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
      
