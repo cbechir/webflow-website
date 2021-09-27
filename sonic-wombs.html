@@ -277,7 +277,9 @@
 
    /* Section purpose: main functions for lightbox actions */
      
-   var openPictureOverlay = function() {
+   var openPictureOverlay = function(elementIdPrefix) {
+
+   console.log("elementIdPrefix is: " + elementIdPrefix);
 
      if (document.getElementById("navbar") != undefined) {
         document.getElementById("navbar").style.display = "none";
@@ -418,15 +420,15 @@
    /* Section purpose: set up listeners for lightbox actions */
  
    for (var i = 0; i < photoSeriesThumbnails.length; i++) {
-     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay, false);
+     photoSeriesThumbnails[i].addEventListener('click', openPictureOverlay("picture"), false);
    }
    
    for (var i = 0; i < gradualReleaseThumbnails.length; i++) {
-     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay, false);
+     gradualReleaseThumbnails[i].addEventListener('click', openPictureOverlay("gradual-release"), false);
    }
    
    for (var i = 0; i < berlin2021ExhibitThumbnails.length; i++) {
-     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay, false);
+     berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay("berlin-2021-exhibit", false);
    }
    
    var galleryUpperSection = document.getElementById("gallery-upper-section");
