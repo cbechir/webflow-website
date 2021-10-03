@@ -292,16 +292,13 @@
      document.getElementsByTagName('body')[0].style.overflow = "visible";
 
      document.getElementById("single-picture-overlay").style.display = "none";      
-     document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
+     //document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
      
      // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
      triggerMasonaryGridOrdering();
    }
    
    var nextPicture = function() {
-     console.log("nextPicture call registered");
-     console.log("idPrefix: " + idPrefix);
-     console.log("numberOfPictures: " + numberOfPictures);
 
      /* Get current picture number */
      var currentPictureNumber = document.getElementById("picture-counter").textContent.split("/")[0].trim();
@@ -383,7 +380,7 @@
      document.getElementById("picture-counter").textContent = pictureNumber + " / " + numberOfPictures; 
 
      document.getElementById("single-picture-overlay").style.display = "flex";      
-     document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
+     //document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
   
      updateCursors(pictureNumber);
    };
