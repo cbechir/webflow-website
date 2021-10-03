@@ -169,6 +169,9 @@
       triggerGradualReleaseMasonaryGridOrdering();
       triggerPhotoSeriesMasonaryGridOrdering();
       triggerBerlin2021ExhibitMasonaryGridOrdering();
+      triggerBerlin2021ExhibitVernissageMasonaryGridOrdering();
+      triggerBerlin2021ExhibitPrepMasonaryGridOrdering();
+      triggerBerlin2021ExhibitHandoutsMasonaryGridOrdering();
    }
 
     var triggerGradualReleaseMasonaryGridOrdering = function () {
@@ -203,12 +206,42 @@
           });
        });
     };
+
+    var triggerBerlin2021ExhibitHandoutsMasonaryGridOrdering = function () {
+        var gridItem = document.querySelector('.berlin-2021-exhibit-handouts-pictures-data');
+        imagesLoaded(gridItem, function( instance ) {
+            var elem = gridItem;
+            var msnry = new Masonry(elem, {
+               itemSelector: '.berlin-2021-exhibit-handouts-picture-data',
+               horizontalOrder: true
+          });
+       });
+    };
+
+    var triggerBerlin2021ExhibitPrepMasonaryGridOrdering = function () {
+        var gridItem = document.querySelector('.berlin-2021-exhibit-prep-pictures-data');
+        imagesLoaded(gridItem, function( instance ) {
+            var elem = gridItem;
+            var msnry = new Masonry(elem, {
+               itemSelector: '.berlin-2021-exhibit-prep-picture-data',
+               horizontalOrder: true
+          });
+       });
+    };
+
+    var triggerBerlin2021ExhibitVernissageMasonaryGridOrdering = function () {
+        var gridItem = document.querySelector('.berlin-2021-exhibit-vernissage-pictures-data');
+        imagesLoaded(gridItem, function( instance ) {
+            var elem = gridItem;
+            var msnry = new Masonry(elem, {
+               itemSelector: '.berlin-2021-exhibit-vernissage-picture-data',
+               horizontalOrder: true
+          });
+       });
+    };
    
    /* Masonary Grid for thumbnails */ 
-   window.addEventListener("load", triggerGradualReleaseMasonaryGridOrdering, false); 
-   window.addEventListener("load", triggerPhotoSeriesMasonaryGridOrdering, false); 
-   window.addEventListener("load", triggerBerlin2021ExhibitMasonaryGridOrdering, false); 
-
+   window.addEventListener("load", triggerMasonaryGridOrdering, false); 
 
    /* Section purpose: Night Mode */
 
