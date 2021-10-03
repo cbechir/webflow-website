@@ -12,11 +12,17 @@
       $('.gradual-release-picture-data').each(function() {
          $(this).attr('id', 'gradualrelease-'+ $(this).children('.hidden-picture-number').text().trim());
       });
-      $('.berlin-2021-exhibit-picture-data').each(function() {
-         $(this).attr('id', 'berlin2021exhibit-'+ $(this).children('.hidden-picture-number').text().trim());
-      });
       $('.berlin-2021-exhibit-handouts-picture-data').each(function() {
          $(this).attr('id', 'berlin2021exhibithandouts-'+ $(this).children('.hidden-picture-number').text().trim());
+      });
+      $('.berlin-2021-exhibit-prep-picture-data').each(function() {
+         $(this).attr('id', 'berlin2021exhibitprep-'+ $(this).children('.hidden-picture-number').text().trim());
+      });
+      $('.berlin-2021-exhibit-vernissage-picture-data').each(function() {
+         $(this).attr('id', 'berlin2021exhibitvernissage-'+ $(this).children('.hidden-picture-number').text().trim());
+      });
+      $('.berlin-2021-exhibit-picture-data').each(function() {
+         $(this).attr('id', 'berlin2021exhibit-'+ $(this).children('.hidden-picture-number').text().trim());
       });
    });
 
@@ -24,10 +30,14 @@
    var photoSeriesNumberOfPictures = photoSeriesThumbnails.length; 
    var gradualReleaseThumbnails = document.getElementsByClassName("gradual-release-picture-data");
    var gradualReleaseNumberOfPictures = gradualReleaseThumbnails.length; 
-   var berlin2021ExhibitThumbnails = document.getElementsByClassName("berlin-2021-exhibit-picture-data");
-   var berlin2021ExhibitNumberOfPictures = berlin2021ExhibitThumbnails.length;
    var berlin2021ExhibitHandoutsThumbnails = document.getElementsByClassName("berlin-2021-exhibit-handouts-picture-data");
    var berlin2021ExhibitHandoutsNumberOfPictures = berlin2021ExhibitHandoutsThumbnails.length;  
+   var berlin2021ExhibitPrepThumbnails = document.getElementsByClassName("berlin-2021-exhibit-prep-picture-data");
+   var berlin2021ExhibitPrepNumberOfPictures = berlin2021ExhibitPrepThumbnails.length;  
+   var berlin2021ExhibitVernissageThumbnails = document.getElementsByClassName("berlin-2021-exhibit-vernissage-picture-data");
+   var berlin2021ExhibitVernissageNumberOfPictures = berlin2021ExhibitVernissageThumbnails.length;  
+   var berlin2021ExhibitThumbnails = document.getElementsByClassName("berlin-2021-exhibit-picture-data");
+   var berlin2021ExhibitNumberOfPictures = berlin2021ExhibitThumbnails.length;
 
    var idPrefix;
    var numberOfPictures;
@@ -292,7 +302,6 @@
      document.getElementsByTagName('body')[0].style.overflow = "visible";
 
      document.getElementById("single-picture-overlay").style.display = "none";      
-     //document.getElementById("photo-series-gallery-wrapper").style.overflow = "auto";
      
      // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
      triggerMasonaryGridOrdering();
@@ -362,6 +371,12 @@
      else if (idPrefix === "berlin2021exhibithandouts") {
          numberOfPictures = berlin2021ExhibitHandoutsNumberOfPictures;  
      }
+     else if (idPrefix === "berlin2021exhibitprep") {
+         numberOfPictures = berlin2021ExhibitPrepNumberOfPictures;  
+     }
+     else if (idPrefix === "berlin2021exhibitvernissage") {
+         numberOfPictures = berlin2021ExhibitVernissageNumberOfPictures;  
+     }
 
      if (document.getElementById("navbar") != undefined) {
         document.getElementById("navbar").style.display = "none";
@@ -380,7 +395,6 @@
      document.getElementById("picture-counter").textContent = pictureNumber + " / " + numberOfPictures; 
 
      document.getElementById("single-picture-overlay").style.display = "flex";      
-     //document.getElementById("photo-series-gallery-wrapper").style.overflow = "hidden";
   
      updateCursors(pictureNumber);
    };
@@ -453,6 +467,14 @@
 
    for (var i = 0; i < berlin2021ExhibitHandoutsThumbnails.length; i++) {
      berlin2021ExhibitHandoutsThumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
+
+   for (var i = 0; i < berlin2021ExhibitPrepThumbnails.length; i++) {
+     berlin2021ExhibitPrepThumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
+
+   for (var i = 0; i < berlin2021ExhibitVernissageThumbnails.length; i++) {
+     berlin2021ExhibitVernissageThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
 
 
