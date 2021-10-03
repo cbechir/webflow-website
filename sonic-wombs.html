@@ -15,6 +15,9 @@
       $('.berlin-2021-exhibit-picture-data').each(function() {
          $(this).attr('id', 'berlin2021exhibit-'+ $(this).children('.hidden-picture-number').text().trim());
       });
+      $('.berlin-2021-exhibit-handouts-picture-data').each(function() {
+         $(this).attr('id', 'berlin2021exhibithandouts-'+ $(this).children('.hidden-picture-number').text().trim());
+      });
    });
 
    var photoSeriesThumbnails = document.getElementsByClassName("photo-series-picture-data");
@@ -22,7 +25,9 @@
    var gradualReleaseThumbnails = document.getElementsByClassName("gradual-release-picture-data");
    var gradualReleaseNumberOfPictures = gradualReleaseThumbnails.length; 
    var berlin2021ExhibitThumbnails = document.getElementsByClassName("berlin-2021-exhibit-picture-data");
-   var berlin2021ExhibitNumberOfPictures = berlin2021ExhibitThumbnails.length; 
+   var berlin2021ExhibitNumberOfPictures = berlin2021ExhibitThumbnails.length;
+   var berlin2021ExhibitHandoutsThumbnails = document.getElementsByClassName("berlin-2021-exhibit-handouts-picture-data");
+   var berlin2021ExhibitHandoutsNumberOfPictures = berlin2021ExhibitHandoutsThumbnails.length;  
 
    var idPrefix;
    var numberOfPictures;
@@ -357,6 +362,9 @@
      else if (idPrefix === "berlin2021exhibit") {
          numberOfPictures = berlin2021ExhibitNumberOfPictures;  
      }
+     else if (idPrefix === "berlin2021exhibithandouts") {
+         numberOfPictures = berlin2021ExhibitHandoutsNumberOfPictures;  
+     }
 
      if (document.getElementById("navbar") != undefined) {
         document.getElementById("navbar").style.display = "none";
@@ -445,6 +453,11 @@
    for (var i = 0; i < berlin2021ExhibitThumbnails.length; i++) {
      berlin2021ExhibitThumbnails[i].addEventListener('click', openPictureOverlay, false);
    }
+
+   for (var i = 0; i < berlin2021ExhibitHandoutsThumbnails.length; i++) {
+     berlin2021ExhibitHandoutsThumbnails[i].addEventListener('click', openPictureOverlay, false);
+   }
+
 
    document.getElementById("gallery-upper-section").addEventListener('click', closePictureOverlay, false);
    document.getElementById("single-picture-overlay-close-icon").addEventListener('click', closePictureOverlay, false);
