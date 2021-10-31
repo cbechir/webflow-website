@@ -166,24 +166,13 @@
    }
 
    var triggerMasonaryGridOrdering = function () {
-      triggerGradualReleaseMasonaryGridOrdering();
       triggerPhotoSeriesMasonaryGridOrdering();
+      triggerBerlin2021ExhibitHandoutsMasonaryGridOrdering();
       triggerBerlin2021ExhibitMasonaryGridOrdering();
       triggerBerlin2021ExhibitVernissageMasonaryGridOrdering();
       triggerBerlin2021ExhibitPrepMasonaryGridOrdering();
-      triggerBerlin2021ExhibitHandoutsMasonaryGridOrdering();
-   }
-
-    var triggerGradualReleaseMasonaryGridOrdering = function () {
-        var gridItem = document.querySelector('.gradual-release-pictures-data');
-        imagesLoaded(gridItem, function( instance ) {
-            var elem = gridItem;
-            var msnry = new Masonry(elem, {
-               itemSelector: '.gradual-release-picture-data',
-               horizontalOrder: true
-          });
-       });
-    };
+      
+   };
     
     var triggerPhotoSeriesMasonaryGridOrdering = function () {
         var gridItem = document.querySelector('.photo-series-pictures-data');
@@ -196,17 +185,6 @@
        });
     };
     
-    var triggerBerlin2021ExhibitMasonaryGridOrdering = function () {
-        var gridItem = document.querySelector('.berlin-2021-exhibit-pictures-data');
-        imagesLoaded(gridItem, function( instance ) {
-            var elem = gridItem;
-            var msnry = new Masonry(elem, {
-               itemSelector: '.berlin-2021-exhibit-picture-data',
-               horizontalOrder: true
-          });
-       });
-    };
-
     var triggerBerlin2021ExhibitHandoutsMasonaryGridOrdering = function () {
         var gridItem = document.querySelector('.berlin-2021-exhibit-handouts-pictures-data');
         imagesLoaded(gridItem, function( instance ) {
@@ -218,23 +196,35 @@
        });
     };
 
-    var triggerBerlin2021ExhibitPrepMasonaryGridOrdering = function () {
-        var gridItem = document.querySelector('.berlin-2021-exhibit-prep-pictures-data');
-        imagesLoaded(gridItem, function( instance ) {
-            var elem = gridItem;
-            var msnry = new Masonry(elem, {
-               itemSelector: '.berlin-2021-exhibit-prep-picture-data',
-               horizontalOrder: true
-          });
-       });
-    };
-
     var triggerBerlin2021ExhibitVernissageMasonaryGridOrdering = function () {
         var gridItem = document.querySelector('.berlin-2021-exhibit-vernissage-pictures-data');
         imagesLoaded(gridItem, function( instance ) {
             var elem = gridItem;
             var msnry = new Masonry(elem, {
                itemSelector: '.berlin-2021-exhibit-vernissage-picture-data',
+               horizontalOrder: true
+          });
+       });
+    };
+
+    var triggerBerlin2021ExhibitMasonaryGridOrdering = function () {
+        var gridItem = document.querySelector('.berlin-2021-exhibit-pictures-data');
+        imagesLoaded(gridItem, function( instance ) {
+            var elem = gridItem;
+            var msnry = new Masonry(elem, {
+               itemSelector: '.berlin-2021-exhibit-picture-data',
+               horizontalOrder: true
+          });
+       });
+    };
+
+
+    var triggerBerlin2021ExhibitPrepMasonaryGridOrdering = function () {
+        var gridItem = document.querySelector('.berlin-2021-exhibit-prep-pictures-data');
+        imagesLoaded(gridItem, function( instance ) {
+            var elem = gridItem;
+            var msnry = new Masonry(elem, {
+               itemSelector: '.berlin-2021-exhibit-prep-picture-data',
                horizontalOrder: true
           });
        });
