@@ -242,6 +242,7 @@
    
    /* Masonary Grid for thumbnails */ 
    window.addEventListener("load", triggerMasonaryGridOrdering, false); 
+   window.addEventListener("load", triggerMasonaryGridOrdering, false); 
 
    /* Section purpose: Night Mode */
 
@@ -308,6 +309,7 @@
 
       // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
       triggerMasonaryGridOrdering();
+      triggerMasonaryGridOrdering();
     }
    
    var hideTextIcon = document.getElementById("hide-text-icon");
@@ -337,6 +339,7 @@
      document.getElementById("single-picture-overlay").style.display = "none";      
      
      // Retrigger masony grid because layout can break when entering / exiting window and browser fullscreen. 
+     triggerMasonaryGridOrdering();
      triggerMasonaryGridOrdering();
    }
    
