@@ -178,20 +178,8 @@
       triggerBerlin2021ExhibitPrepMasonaryGridOrdering();
    };
     
-    var triggerPhotoSeriesMasonaryGridOrdering = function () {   
-      var $grid = $('.photo-series-pictures-data').masonry({
-         itemSelector: '.g.photo-series-picture-data',
-         horizontalOrder: true
-      });
-      // layout Masonry after each image loads
-      $grid.imagesLoaded().progress( function() {
-        $grid.masonry();
-      });
-      console.log("success for photo series")  
-   };
-
-
-/*        var gridItem = document.querySelector('.photo-series-pictures-data');
+    var triggerPhotoSeriesMasonaryGridOrdering = function () {
+        var gridItem = document.querySelector('.photo-series-pictures-data');
         imagesLoaded(gridItem, function( instance ) {
             var elem = gridItem;
             var msnry = new Masonry(elem, {
@@ -199,7 +187,7 @@
                horizontalOrder: true
           });
        });
-    };*/
+    };
     
     var triggerBerlin2021ExhibitHandoutsMasonaryGridOrdering = function () {
         var gridItem = document.querySelector('.berlin-2021-exhibit-handouts-pictures-data');
@@ -247,7 +235,7 @@
     };
    
    /* Masonary Grid for thumbnails */ 
-   window.addEventListener("load", triggerMasonaryGridOrdering, false); 
+   //window.addEventListener("load", triggerMasonaryGridOrdering, false); 
 
    /* Section purpose: Night Mode */
 
