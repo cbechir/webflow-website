@@ -1,6 +1,6 @@
 <script>
 
-      var enableNightMode = function () {
+  var enableNightMode = function () {
       var backgroundColor = backgroundGray1;
       var titleColor = contrast_gray_100;
       var textHighlightColor = contrast_gray_300;
@@ -75,13 +75,13 @@
       for (const element of document.getElementsByClassName("song-title")) {
         element.style.color = textHighlightColor;
       }
+
+      for (const element of document.getElementsByClassName("streaming-service-logo")) {
+        element.classList.add("dark-theme");
+      }
       */
 
       for (const element of document.getElementsByClassName("song-description")) {
-        element.classList.add("dark-theme");
-      }
-
-      for (const element of document.getElementsByClassName("streaming-service-logo")) {
         element.classList.add("dark-theme");
       }
       
@@ -188,6 +188,10 @@
       for (const element of document.getElementsByClassName("streaming-service-logo")) {
         element.classList.remove("dark-theme");
       }
+
+      for (const button of document.getElementsByClassName("streaming-service-button")) {
+        button.classList.remove("dark-theme");
+      }
       */
 
       for (const element of document.getElementsByClassName("song-description")) {
@@ -200,9 +204,6 @@
        textField.style.borderColor = borderColor;
      }
      
-     for (const button of document.getElementsByClassName("streaming-service-button")) {
-        button.classList.remove("dark-theme");
-     }
      
      document.getElementsByClassName("streaming-services-section")[0].style.backgroundColor = backgroundColor;
      document.getElementsByClassName("streaming-services-section")[0].style.backgroundSize = "auto";
