@@ -54,13 +54,29 @@
 
       document.getElementsByClassName("chapter-1-extra-slide")[0].style.backgroundColor = backgroundColor; 
       document.getElementsByClassName("extra-slide-text")[0].style.color = textHighlightColor; 
+
+      for (const releaseDate of document.getElementsByClassName("release-date")) {
+        releaseDate.style.color = black;
+      }
+
+      for (const songTitle of document.getElementsByClassName("song-title")) {
+        songTitle.style.color = black;
+      }
+
+      for (const songDescriptionText of document.getElementsByClassName("song-description-text")) {
+        songDescriptionText.style.color = black;
+      }
       
+      /*
+      Comment out to re-enable dark-mode on mixtape song slide.
       for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
         squareWrapper.style.borderColor = borderColor;
       }
       for (const element of document.getElementsByClassName("song-title")) {
         element.style.color = textHighlightColor;
       }
+      */
+
       for (const element of document.getElementsByClassName("streaming-service-logo")) {
         element.classList.add("dark-theme");
       }
@@ -146,13 +162,29 @@
       document.getElementsByClassName("chapter-1-extra-slide")[0].style.backgroundColor = backgroundColor;
       document.getElementsByClassName("extra-slide-text")[0].style.color = textHighlightColor; 
       
+      for (const releaseDate of document.getElementsByClassName("release-date")) {
+        releaseDate.style.color = black;
+      }
+
+      for (const songTitle of document.getElementsByClassName("song-title")) {
+        songTitle.style.color = black;
+      }
+
+      for (const songDescriptionText of document.getElementsByClassName("song-description-text")) {
+        songDescriptionText.style.color = black;
+      }
+
+      /*
+      Comment out to re-enable darkmode on mixtape song slide
       for (const squareWrapper of document.getElementsByClassName("square-wrapper")) {
         squareWrapper.style.borderColor = borderColor;
       }
+
       
       for (const element of document.getElementsByClassName("streaming-service-logo")) {
         element.classList.remove("dark-theme");
       }
+      */
       
       document.getElementsByClassName("listen-message")[0].style.color = titleColor;
       
@@ -190,6 +222,8 @@
    nightModeIconMobile.addEventListener('click', enableNightMode, false);
    lightModeIcon.addEventListener('click', disableNightMode, false);
    lightModeIconMobile.addEventListener('click', disableNightMode, false);
+
+   
    
    /* Footer - Next Previous Playlists */
    var Webflow = Webflow || [];
