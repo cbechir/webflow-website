@@ -77,6 +77,10 @@
       }
       */
 
+      for (const element of document.getElementsByClassName("song-description")) {
+        element.classList.add("dark-theme");
+      }
+
       for (const element of document.getElementsByClassName("streaming-service-logo")) {
         element.classList.add("dark-theme");
       }
@@ -185,6 +189,10 @@
         element.classList.remove("dark-theme");
       }
       */
+
+      for (const element of document.getElementsByClassName("song-description")) {
+        element.classList.remove("dark-theme");
+      }
       
       document.getElementsByClassName("listen-message")[0].style.color = titleColor;
       
