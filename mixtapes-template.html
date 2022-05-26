@@ -105,6 +105,7 @@
   
       document.getElementsByClassName("mixtape-bottom-forms-section")[0].style.backgroundColor = backgroundColor;
       document.getElementsByClassName("mixtape-bottom-forms-section")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("share-song-form")[0].classList.add("dark-theme");
       document.getElementsByClassName("subscribe-button")[0].classList.add("dark-theme");
       document.getElementsByClassName("share-song-button")[0].classList.add("dark-theme");
       
@@ -116,6 +117,7 @@
       document.getElementsByClassName("mixtape-nav-section")[0].style.borderColor = borderColor;
       document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.backgroundColor = backgroundColor;
       document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.borderColor = borderColor;
+
    }
    
    var disableNightMode = function() {
@@ -225,6 +227,7 @@
 
      document.getElementsByClassName("mixtape-bottom-forms-section")[0].style.backgroundColor = black;
      document.getElementsByClassName("mixtape-bottom-forms-section")[0].style.borderColor = borderColor;
+     document.getElementsByClassName("share-song-form")[0].classList.remove("dark-theme");
      document.getElementsByClassName("subscribe-button")[0].classList.remove("dark-theme");
      document.getElementsByClassName("share-song-button")[0].classList.remove("dark-theme");
      
