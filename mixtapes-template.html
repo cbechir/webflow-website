@@ -111,6 +111,8 @@
       
       document.getElementsByClassName("mixtape-nav-section")[0].style.backgroundColor = backgroundColor;
       document.getElementsByClassName("mixtape-nav-section")[0].style.borderColor = borderColor;
+      document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.backgroundColor = backgroundColor;
+      document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.borderColor = borderColor;
    }
    
    var disableNightMode = function() {
@@ -227,6 +229,8 @@
      
      document.getElementsByClassName("mixtape-nav-section")[0].style.backgroundColor = backgroundColor;
      document.getElementsByClassName("mixtape-nav-section")[0].style.borderColor = borderColor;
+     document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.backgroundColor = backgroundColor;
+     document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.borderColor = borderColor;
    }
    
    if (localStorage.getItem("theme") === "dark") {
@@ -255,21 +259,27 @@
       //if last post in list
       if(next_href == undefined) {
         next_href = $('#post_list').children().children().first().find('a').attr('href');
-        $('#next_button').fadeOut(); //optional - remove if you want to loop to beginning
+        $('#next_button_sticky').fadeOut(); //optional - remove if you want to loop to beginning
+        $('#next_button_bottom').fadeOut(); //optional - remove if you want to loop to beginning
       }
 
       //if first post in list
       if(previous_href == undefined) {
         previous_href = $('#post_list').children().children().last().find('a').attr('href');
-        $('#previous_button').fadeOut();  //optional - remove if you want to loop to end
+        $('#previous_button_sticky').fadeOut();  //optional - remove if you want to loop to end
+        $('#previous_button_bottom').fadeOut();  //optional - remove if you want to loop to end
       }
 
       //apply data to next / previous buttons
-      $('#next_button').attr('href', next_href);
-      $('#previous_button').attr('href', previous_href);
+      $('#next_button_sitcky').attr('href', next_href);
+      $('#next_button_bottom').attr('href', next_href);
+      $('#previous_button_sticky').attr('href', previous_href);
+      $('#previous_button_bottom').attr('href', previous_href);
 
-      $('#next_mixtape_title').text(next_mixtape_title);
-      $('#previous_mixtape_title').text(previous_mixtape_title);
+      $('#next_mixtape_title_sticky').text(next_mixtape_title);
+      $('#next_mixtape_title_bottom').text(next_mixtape_title);
+      $('#previous_mixtape_title_sticky').text(previous_mixtape_title);
+      $('#previous_mixtape_title_bottom').text(previous_mixtape_title);
 
     });
 
