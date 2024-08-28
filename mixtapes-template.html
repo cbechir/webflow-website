@@ -126,11 +126,16 @@
 
    }
 
-   var invertSVG = function () {
+   var invertSVGForLightMode = function () {
       var profileSVG = document.getElementsByClassName("mixtape-profile")[0];
       if (profileSVG.style.filter === 'invert(100%)') {
         profileSVG.style.filter = 'invert(0%)';
-      } else {
+      }
+   }
+
+   var invertSVGForDarkMode = function () {
+      var profileSVG = document.getElementsByClassName("mixtape-profile")[0];
+      if (profileSVG.style.filter === 'invert(0%)') {
         profileSVG.style.filter = 'invert(100%)';
       }
    }
@@ -171,7 +176,7 @@
       document.getElementsByClassName("arrow-icon")[0].style.opacity = 1;
 
       invertSVG();
-            
+
       for (const section of document.getElementsByClassName("section")) {
         section.style.borderColor = borderColor;
       }
