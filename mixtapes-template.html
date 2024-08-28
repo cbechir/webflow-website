@@ -34,7 +34,7 @@
       document.getElementsByClassName("spacebar-message")[0].style.color = contrast_gray_600;
       document.getElementsByClassName("arrow-icon")[0].style.opacity = 0.3;
 
-      invertSVG();
+      invertSVGForDarkMode();
 
       for (const section of document.getElementsByClassName("section")) {
         section.style.borderColor = borderColor;
@@ -175,7 +175,7 @@
       document.getElementsByClassName("spacebar-message")[0].style.color = textColor;
       document.getElementsByClassName("arrow-icon")[0].style.opacity = 1;
 
-      invertSVG();
+      invertSVGForLightMode();
 
       for (const section of document.getElementsByClassName("section")) {
         section.style.borderColor = borderColor;
