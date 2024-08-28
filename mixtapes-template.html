@@ -34,7 +34,7 @@
       document.getElementsByClassName("spacebar-message")[0].style.color = contrast_gray_600;
       document.getElementsByClassName("arrow-icon")[0].style.opacity = 0.3;
 
-      document.getElementsByClassName("mixtape-profile")[0].classList.add("dark-theme");
+      invertSVG();
 
       for (const section of document.getElementsByClassName("section")) {
         section.style.borderColor = borderColor;
@@ -125,6 +125,15 @@
       document.getElementsByClassName("mixtape-nav-section-bottom")[0].style.borderColor = borderColor;
 
    }
+
+   var invertSVG = function () {
+      var profileSVG = document.getElementsByClassName("mixtape-profile")[0];
+      if (profileSVG.style.filter === 'invert(100%)') {
+        profileSVG.style.filter = 'invert(0%)';
+      } else {
+        profileSVG.style.filter = 'invert(100%)';
+      }
+   }
    
    var disableNightMode = function() {
       var backgroundColor = white;
@@ -161,8 +170,8 @@
       document.getElementsByClassName("spacebar-message")[0].style.color = textColor;
       document.getElementsByClassName("arrow-icon")[0].style.opacity = 1;
 
-      document.getElementsByClassName("mixtape-profile")[0].classList.remove("dark-theme");
-      
+      invertSVG();
+            
       for (const section of document.getElementsByClassName("section")) {
         section.style.borderColor = borderColor;
       }
