@@ -127,11 +127,15 @@
    }
 
    var invertSVGForLightMode = function () {
-      document.getElementsByClassName("mixtape-profile")[0].style.filter = 'invert(0%)';
+      for (const element of document.getElementsByClassName("mixtape-profile")) {
+        element.style.filter = 'invert(0%)';
+      }
    }
 
    var invertSVGForDarkMode = function () {
-      document.getElementsByClassName("mixtape-profile")[0].style.filter = 'invert(100%)';
+      for (const element of document.getElementsByClassName("mixtape-profile")) {
+        element.style.filter = 'invert(100%)';
+      }
    }
    
    var disableNightMode = function() {
