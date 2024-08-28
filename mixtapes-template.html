@@ -127,17 +127,11 @@
    }
 
    var invertSVGForLightMode = function () {
-      var profileSVG = document.getElementsByClassName("mixtape-profile")[0];
-      if (profileSVG.style.filter === 'invert(100%)') {
-        profileSVG.style.filter = 'invert(0%)';
-      }
+      document.getElementsByClassName("mixtape-profile")[0].style.filter = 'invert(0%)';
    }
 
    var invertSVGForDarkMode = function () {
-      var profileSVG = document.getElementsByClassName("mixtape-profile")[0];
-      if (profileSVG.style.filter === 'invert(0%)') {
-        profileSVG.style.filter = 'invert(100%)';
-      }
+      document.getElementsByClassName("mixtape-profile")[0].style.filter = 'invert(100%)';
    }
    
    var disableNightMode = function() {
