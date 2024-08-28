@@ -161,7 +161,7 @@
       document.getElementsByClassName("spacebar-message")[0].style.color = textColor;
       document.getElementsByClassName("arrow-icon")[0].style.opacity = 1;
 
-      document.getElementsByClassName("mixtape-profile")[0].style.filter = 'invert(0%)';
+      document.getElementsByClassName("mixtape-profile")[0].classList.remove("dark-theme");
       
       for (const section of document.getElementsByClassName("section")) {
         section.style.borderColor = borderColor;
